@@ -1,0 +1,30 @@
+---
+title: "Blog Genetica Agronômica"
+description: |
+  blog antigo que irei comentar 
+author: 
+  - name: Afonso Campos
+date: 10-07-2021
+preview: genagro.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Apenas uma gráfico de código em R 
+
+
+```{r, include= TRUE, echo=TRUE}
+hist(rnorm(1000))
+
+```
+
+teste de postagem do blog antigo <https://rstudio.github.io/distill>.
+
+
+

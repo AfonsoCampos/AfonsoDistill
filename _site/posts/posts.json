@@ -1,0 +1,19 @@
+[
+  {
+    "path": "posts/2021-10-07-blog-genetica-agrmica/",
+    "title": "Blog Genetica Agronômica",
+    "description": "blog antigo que irei comentar",
+    "author": [
+      {
+        "name": "Afonso Campos",
+        "url": {}
+      }
+    ],
+    "date": "2021-10-07",
+    "categories": [],
+    "contents": "\r\nApenas uma gráfico de código em R\r\n\r\n\r\nhist(rnorm(1000))\r\n\r\n\r\n\r\n\r\nteste de postagem do blog antigo https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-10-07-blog-genetica-agrmica/genagro.jpg",
+    "last_modified": "2021-10-07T18:50:11-03:00",
+    "input_file": {}
+  }
+]
