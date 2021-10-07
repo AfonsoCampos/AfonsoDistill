@@ -6,15 +6,15 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-10-07T18:01:24-03:00"
+      "last_modified": "2021-10-07T18:24:33-03:00"
     },
     {
       "path": "index.html",
       "title": "Afonso Campos",
-      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "description": "Site para armazenar alguns projetos reais e fictícios. \n",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-10-07T18:01:26-03:00"
+      "contents": "\r\n\r\nResumo:\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-10-07T18:24:35-03:00"
     }
   ],
   "collections": []

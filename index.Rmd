@@ -1,7 +1,7 @@
 ---
 title: "Afonso Campos"
 description: |
-  Welcome to the website. I hope you enjoy it!
+ Site para armazenar alguns projetos reais e fictícios. 
 site: distill::distill_website
 ---
 
@@ -13,3 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+
+![](Afonso_Capa.jpg)
+
+## Resumo:
