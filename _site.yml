@@ -2,10 +2,15 @@ name: "website"
 title: "Afonso Campos"
 description: |
   Site com alguns projetos executados e outras coisas que venho estudando. 
+collections:
+  posts:
+    categories: true
+    categories_metadata: true
+    authors_metadata: false
 output_dir: "_site"
 navbar:
   logo:
-    image: favlogo3.png
+    image: favicon.ico
   right:
     - text: "Home"
       href: index.html

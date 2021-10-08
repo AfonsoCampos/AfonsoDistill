@@ -1,5 +1,7 @@
 ---
 title: "Blog Genetica Agronômica"
+categories: 
+  - outros
 description: |
   blog antigo que irei comentar 
 author: 
