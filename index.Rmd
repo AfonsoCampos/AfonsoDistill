@@ -12,7 +12,10 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/website.html
 
 ```
-
+<style>
+body {
+text-align: justify}
+</style>
 
 ![](Afonso_Capa.jpg)
 

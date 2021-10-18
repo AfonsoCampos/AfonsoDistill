@@ -1,5 +1,5 @@
 ---
-title: "Mapas Autorganizáveis de Kohonen"
+title: "Mapas Auto-organizáveis de Kohonen"
 categories: 
   - Diversidade
   - Agrupamento
@@ -15,6 +15,11 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+<style>
+body {
+text-align: justify}
+</style>
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -55,7 +60,7 @@ Os dados das siglas das variedades e dos cacteres análisados foram codificados 
 
 ## Definição do mapa de kohonen
 
-A definição do número de neurônios (nós da rede) e geralmente feita no chute. Porém existe um método heurístico empregado no metlab (SOM - Supervisionado) que, foi adaptado para o R e eu achei o resultado satisfatório. Desta maneira a grade foi formada por 8 linhas e 5 colunas, totalizando 80 neurônios. Foi utilizada a distancia euclidiana e cinco mil interações para o treinamento da rede. Mais informações sobre estão abaixo:
+A definição do número de neurônios (nós da rede) e geralmente feita no chute. Porém existe um método heurístico empregado no metlab (SOM - Supervisionado) que, foi adaptado para o R e eu achei o resultado satisfatório. Desta maneira a grade foi formada por 8 linhas e 5 colunas, totalizando 80 neurônios. Foi utilizada a distancia euclidiana e cinco mil interações para o treinamento da rede. Mais informações abaixo:
 
 ```{r}
 # rede treinando 
@@ -67,12 +72,15 @@ diver_som <- matriz %>%
       alpha = c(0.05, 0.01), 
 #      radius = 1, 
       dist.fcts = "euclidean", rlen = 5000)
+
+diver_grid[-1]
+
 summary(diver_som)
 ```
 
 ## Resultados
 
-A primeira saída é o treinamento da rede. Apesar de não ser um gráfico bonito o que vale aqui é observar uma "estabilização" conforme o número de interações aumenta.
+A primeira saída é o treinamento da rede. Apesar de não ser um gráfico bonito, o que vale aqui é observar uma "estabilização" conforme o número de interações aumenta.
 
 ```{r}
 # grafico 
@@ -86,7 +94,7 @@ diver_som$changes %>%
   theme_bw()+
   ylab("Distância média")+
   xlab("Interação")+
-  theme(text = element_text(size = 14))
+  theme(text = element_text(size = 10))
 
 ```
 
@@ -160,7 +168,7 @@ aweSOMplot(som = diver_som, type = "Circular", data = diver_data,
            superclass = superclasses_hclust)
 ```
 
-**Grafico de Barras**
+**Gráfico de Barras**
 
 ```{r}
 aweSOMplot(som = diver_som, type = "Barplot", data = diver_data, 
@@ -176,4 +184,4 @@ aweSOMplot(som = diver_som, type = "Radar", data = diver_data,
            superclass = superclasses_hclust)
 ```
 
-Uma das grandes vantagens que eu vejo como iniciante ao utilizar a tecnica é a possibilidade de visualizar a distancia "física" entre os agrupamentos, algo que não é possível em outras técnicas convencionais de analise de agrupamento. Dessa maneira eu além dos grupos posso recomendar cruzamentos utilizando os mais distantes visualmente no mapa.
+Uma das grandes vantagens que eu vejo como iniciante ao utilizar a tecnica é a possibilidade de visualizar a distancia "física" entre os agrupamentos, algo que não é possível em outras técnicas convencionais de analise de agrupamento. Dessa maneira, além dos grupos, posso recomendar cruzamentos utilizando os mais distantes visualmente no mapa de maneira a explorar a variabilidade dos clones.
