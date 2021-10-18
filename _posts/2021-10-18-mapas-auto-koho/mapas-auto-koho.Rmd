@@ -1,0 +1,171 @@
+---
+title: "Mapas Autorganizáveis de Kohonen"
+categories: 
+  - Diversidade
+  - Agrupamento
+  - IA
+  - Redes Neurais
+description: |
+ Utilizando inteligência computacional para uma análise de diversidade genética com gráficos interativos.
+author: 
+  - name: Afonso Campos
+date: 10-18-2021
+preview: koho.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, include=FALSE}
+# pacotes 
+library(tidyverse)
+library(kohonen)
+library(aweSOM)
+library(MultivariateAnalysis)
+
+
+#dados 
+diver_data <- xlsx::read.xlsx("C:/Users/Afonso/OneDrive - ufpr.br/Rprojetos/blogDados/Diver_koho_ju/DADOSDIVERSIDADE.xlsx", sheetIndex = 1)
+
+# Selecionando as variáveis e obtendo as médias padronizadas 
+names(diver_data)
+diver_data<- diver_data %>% 
+  column_to_rownames("GENITOR") %>% 
+  mutate_all( ~(scale(.) %>% as.vector)) %>% #padronizando antes
+  select(-Var.2, -Var.3, -Var.7, -Var.10)
+matriz <- as.matrix(diver_data)
+
+
+```
+
+
+## Introdução 
+Esse foi um pipeline que desenvolvi para um artigo utilizando mapas autorganizaveis de kohonen (SOM) para a análise de diversidedade genética de variedades de cana-de-açúcar.
+
+Os dados das siglas das variedades e dos cacteres análisados foram codificados de maneira a manter a originalidade do artigo que esta começando a ser escrito na data de publção deste post. 
+
+## Informações básicas Sobre os dados: 
+- 63 variedades (recentes e antigas)
+- 13 Caracteres 
+
+## Devinição do mapa de kohonen 
+
+A definição do numéro de neurônios (nós da rede) e feita meio que no chute. Porém existe um método heurístico empregado no metlab (SOM - Supervisionado) que, foi adaptado para o R e eu achei o resultado satisfatório. Desta maneira a grade foi  formada por 8 linhas e 5 colunas, totalizando 80 neurônios. Foi utilizada a distancia euclidiana e 5000 mil interações para o treinamento da rede. 
+
+## Resultados 
+
+A primeira saída e o treinamento da rede. Apesar de não ser um gráfico bonito o que vale aqui é observar  uma "estabilização" conforme o número de interações aumenta.  
+
+```{r}
+# treinando 
+set.seed(12345)
+diver_grid <- somgrid(8,5, "hexagonal","gaussian")
+
+diver_som <- matriz %>%
+  som(grid =diver_grid , 
+      alpha = c(0.05, 0.01), 
+#      radius = 1, 
+      dist.fcts = "euclidean", rlen = 5000)
+
+diver_som$changes %>% 
+  as.data.frame() %>%
+  rownames_to_column() %>% 
+  mutate_all(as.numeric) %>% 
+  ggplot(aes(rowname, V1))+
+  geom_line()+
+  theme_bw()+
+  ylab("Distância média")+
+  xlab("Interação")+
+  theme(text = element_text(size = 14))
+
+```
+
+Ao menos em alguns argigos de melhoramento que li não vi ninguém mencionando métricas de qualidade de ajustumento do mapa. Todavia, o pacote **aweSOM** fornece alguns parâmetros: 
+
+```{r}
+somQuality(diver_som, diver_data)
+```
+
+Apesar do mapa já nos fornecer um  agrupamento, sendo estes os clones inseridos em cada neurônio. Estes neurônios (N1 a N40) podem ser agrupados novamente e neste caso eu utilizei um metodo hieráraquico (UPGMA) para agrupar os neurônios e corte o dendograma utilizando o critério de mojena (k = 1.25). Além do dendrogama temos novamente métricas que auxiliam na interpretação da qualidade do dendrograma formado.
+
+```{r}
+rownames(diver_som$codes[[1]]) <- paste0("N",1:length(rownames(diver_som$codes[[1]])))
+superclust_hclust <- hclust(dist(diver_som$codes[[1]]), "average")
+superclasses_hclust <- cutree(superclust_hclust, 5)
+dis_mat_neuronios<- dist(diver_som$codes[[1]])
+Dendograma(dis_mat_neuronios,
+           Metodo=3,
+           nperm=999,
+           Titulo="",
+           corte="Mojena1")
+```
+
+
+De acordo com o ponto de corte estimado acima cinco grupos são sugeridos e agora eu posso aplicar estes agrupamentos em todas as outras saídas do mapa de kohonen. 
+
+Começando pelo fim aqui eu posso ver (com graficos interativos) quais e quantos clones foram classificados nos neuronios (pré-clusters) e também os agrupamentos do dendrograma  que são representados pelas cores de preenchimento dos hexágonos. 
+
+```{r}
+aweSOMplot(som = diver_som, type = "Cloud", data = diver_data, 
+           variables = NULL, 
+           superclass = superclasses_hclust)
+```
+
+É Bem comum a representação do número de indivíduos em cada neurônio este grafico abaixo: 
+
+```{r}
+aweSOMplot(som = diver_som, type = "Hitmap", data = diver_data, 
+           superclass = superclasses_hclust)
+```
+
+
+Aqui nós vemos como cada neuronio da grade se relacionou com as treze variaveis além de uma matiz de distancia (Matriz-U) em relção aos seus vizinhos (nesse caso a vizinhança foi esfificada como hexagonal no início do treinamento da rede). Agora os grupos determinados pelo metodo hierarquico são delimitados pelas linhas escuras no mapa.
+
+```{r,  fig.height=5, fig.width=10}
+#plotting the heatmap for each variable
+#colors function for the charts
+coolBlueHotRed <- function(n, alpha = 1) {
+  rainbow(n, end=4/6, alpha=alpha)[n:1]
+  }
+#plotting the heatmap for each variable
+
+
+par(mfrow=c(4,4))
+plot(diver_som, type = "dist.neighbours",shape ="straight", main = "Matriz U")
+add.cluster.boundaries(diver_som,clustering=superclasses_hclust)
+
+for (j in 1:ncol(diver_data)){
+  plot(diver_som, type = "property", property = getCodes(diver_som)[,j], main=colnames(getCodes(diver_som))[j], palette.name=coolBlueHotRed, shape ="straight")
+  add.cluster.boundaries(diver_som,clustering=superclasses_hclust)
+  
+  }
+
+```
+ 
+Outra maneira de observar todas as variaveis de uma vez só de maneira interativa conforme as figuras abaixo.
+
+
+**Gráfico Circular**
+```{r}
+aweSOMplot(som = diver_som, type = "Circular", data = diver_data, 
+           variables = names(diver_data), 
+           superclass = superclasses_hclust)
+```
+**Grafico de Barras**
+```{r}
+aweSOMplot(som = diver_som, type = "Barplot", data = diver_data, 
+           variables = names(diver_data), 
+           superclass = superclasses_hclust)
+```
+
+**Gráfico de Radar**
+```{r}
+aweSOMplot(som = diver_som, type = "Radar", data = diver_data, 
+           variables = names(diver_data), 
+           superclass = superclasses_hclust)
+```
