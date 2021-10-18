@@ -14,7 +14,7 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "Artigos"
+    - text: "Publicacoes"
       href: about.html
     - text: "Projetos"
       href: blog.html

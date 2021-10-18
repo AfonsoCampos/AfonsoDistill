@@ -16,7 +16,6 @@ output:
     self_contained: false
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -43,26 +42,23 @@ matriz <- as.matrix(diver_data)
 
 ```
 
+## Introdução
 
-## Introdução 
 Esse foi um pipeline que desenvolvi para um artigo utilizando mapas autorganizaveis de kohonen (SOM) para a análise de diversidedade genética de variedades de cana-de-açúcar.
 
-Os dados das siglas das variedades e dos cacteres análisados foram codificados de maneira a manter a originalidade do artigo que esta começando a ser escrito na data de publção deste post. 
+Os dados das siglas das variedades e dos cacteres análisados foram codificados de maneira a manter a originalidade do artigo que esta começando a ser escrito na data de publição deste post.
 
-## Informações básicas Sobre os dados: 
-- 63 variedades (recentes e antigas)
-- 13 Caracteres 
+## Informações básicas sobre os dados:
 
-## Devinição do mapa de kohonen 
+-   63 variedades (recentes e antigas)
+-   13 Caracteres
 
-A definição do numéro de neurônios (nós da rede) e feita meio que no chute. Porém existe um método heurístico empregado no metlab (SOM - Supervisionado) que, foi adaptado para o R e eu achei o resultado satisfatório. Desta maneira a grade foi  formada por 8 linhas e 5 colunas, totalizando 80 neurônios. Foi utilizada a distancia euclidiana e 5000 mil interações para o treinamento da rede. 
+## Definição do mapa de kohonen
 
-## Resultados 
-
-A primeira saída e o treinamento da rede. Apesar de não ser um gráfico bonito o que vale aqui é observar  uma "estabilização" conforme o número de interações aumenta.  
+A definição do número de neurônios (nós da rede) e geralmente feita no chute. Porém existe um método heurístico empregado no metlab (SOM - Supervisionado) que, foi adaptado para o R e eu achei o resultado satisfatório. Desta maneira a grade foi formada por 8 linhas e 5 colunas, totalizando 80 neurônios. Foi utilizada a distancia euclidiana e cinco mil interações para o treinamento da rede. Mais informações sobre estão abaixo:
 
 ```{r}
-# treinando 
+# rede treinando 
 set.seed(12345)
 diver_grid <- somgrid(8,5, "hexagonal","gaussian")
 
@@ -71,6 +67,15 @@ diver_som <- matriz %>%
       alpha = c(0.05, 0.01), 
 #      radius = 1, 
       dist.fcts = "euclidean", rlen = 5000)
+summary(diver_som)
+```
+
+## Resultados
+
+A primeira saída é o treinamento da rede. Apesar de não ser um gráfico bonito o que vale aqui é observar uma "estabilização" conforme o número de interações aumenta.
+
+```{r}
+# grafico 
 
 diver_som$changes %>% 
   as.data.frame() %>%
@@ -85,13 +90,13 @@ diver_som$changes %>%
 
 ```
 
-Ao menos em alguns argigos de melhoramento que li não vi ninguém mencionando métricas de qualidade de ajustumento do mapa. Todavia, o pacote **aweSOM** fornece alguns parâmetros: 
+Ao menos em alguns artigos de melhoramento que li não vi ninguém mencionando métricas de qualidade de ajustumento do mapa. Todavia, o pacote **aweSOM** fornece alguns parâmetros:
 
 ```{r}
 somQuality(diver_som, diver_data)
 ```
 
-Apesar do mapa já nos fornecer um  agrupamento, sendo estes os clones inseridos em cada neurônio. Estes neurônios (N1 a N40) podem ser agrupados novamente e neste caso eu utilizei um metodo hieráraquico (UPGMA) para agrupar os neurônios e corte o dendograma utilizando o critério de mojena (k = 1.25). Além do dendrogama temos novamente métricas que auxiliam na interpretação da qualidade do dendrograma formado.
+Apesar do mapa já nos fornecer um agrupamento, sendo estes os clones inseridos em cada neurônio (tambem chamado de céluas ou subclusters). Estes neurônios (N1 a N40) podem ser agrupados (em superclusters) ,para isso, eu utilizei um metodo hieráraquico (UPGMA) para agrupar e o ponto de corte do dendograma foi o utilizando critério de mojena (k = 1.25). Acredito que esta abordagem é mais palpável que atribuir um ponto de corte aleátório, considerando que neste trabalho não se tem noção de um número ideal de clusters pré definido. Além do dendrogama temos métricas que auxiliam na interpretação da qualidade do dendrograma formado.
 
 ```{r}
 rownames(diver_som$codes[[1]]) <- paste0("N",1:length(rownames(diver_som$codes[[1]])))
@@ -105,10 +110,9 @@ Dendograma(dis_mat_neuronios,
            corte="Mojena1")
 ```
 
+De acordo com o ponto de corte estimado acima, cinco grupos são sugeridos e agora eu posso aplicar estes agrupamentos em todas as outras saídas do mapa de kohonen.
 
-De acordo com o ponto de corte estimado acima cinco grupos são sugeridos e agora eu posso aplicar estes agrupamentos em todas as outras saídas do mapa de kohonen. 
-
-Começando pelo fim aqui eu posso ver (com graficos interativos) quais e quantos clones foram classificados nos neuronios (pré-clusters) e também os agrupamentos do dendrograma  que são representados pelas cores de preenchimento dos hexágonos. 
+Começando pelo fim aqui eu posso ver (com gráficos interativos) quais e quantos clones foram classificados nos neuronios (pré-clusters) e também os agrupamentos do dendrograma que são representados pelas cores de preenchimento dos hexágonos.
 
 ```{r}
 aweSOMplot(som = diver_som, type = "Cloud", data = diver_data, 
@@ -116,13 +120,12 @@ aweSOMplot(som = diver_som, type = "Cloud", data = diver_data,
            superclass = superclasses_hclust)
 ```
 
-É Bem comum a representação do número de indivíduos em cada neurônio este grafico abaixo: 
+É bem comum a representação do número de indivíduos em cada neurônio como neste grafico abaixo:
 
 ```{r}
 aweSOMplot(som = diver_som, type = "Hitmap", data = diver_data, 
            superclass = superclasses_hclust)
 ```
-
 
 Aqui nós vemos como cada neuronio da grade se relacionou com as treze variaveis além de uma matiz de distancia (Matriz-U) em relção aos seus vizinhos (nesse caso a vizinhança foi esfificada como hexagonal no início do treinamento da rede). Agora os grupos determinados pelo metodo hierarquico são delimitados pelas linhas escuras no mapa.
 
@@ -146,17 +149,19 @@ for (j in 1:ncol(diver_data)){
   }
 
 ```
- 
-Outra maneira de observar todas as variaveis de uma vez só de maneira interativa conforme as figuras abaixo.
 
+Outras maneiras de observar todas as variaveis de uma vez só de maneira interativa podem ser observadas nas figuras abaixo.
 
 **Gráfico Circular**
+
 ```{r}
 aweSOMplot(som = diver_som, type = "Circular", data = diver_data, 
            variables = names(diver_data), 
            superclass = superclasses_hclust)
 ```
+
 **Grafico de Barras**
+
 ```{r}
 aweSOMplot(som = diver_som, type = "Barplot", data = diver_data, 
            variables = names(diver_data), 
@@ -164,8 +169,11 @@ aweSOMplot(som = diver_som, type = "Barplot", data = diver_data,
 ```
 
 **Gráfico de Radar**
+
 ```{r}
 aweSOMplot(som = diver_som, type = "Radar", data = diver_data, 
            variables = names(diver_data), 
            superclass = superclasses_hclust)
 ```
+
+Uma das grandes vantagens que eu vejo como iniciante ao utilizar a tecnica é a possibilidade de visualizar a distancia "física" entre os agrupamentos, algo que não é possível em outras técnicas convencionais de analise de agrupamento. Dessa maneira eu além dos grupos posso recomendar cruzamentos utilizando os mais distantes visualmente no mapa.

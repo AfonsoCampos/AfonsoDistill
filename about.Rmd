@@ -1,10 +1,43 @@
 ---
-title: "About this site"
+title: "Publicações"
 description: |
-  Some additional details about the website
+  Este espaço será destinado para as principais publicações desenvolvidas durante minha trajetoria acadêmica. 
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## Artigos Publicados
+
+### 2021
+
+-   [BORELLA, JULIANE ; PORTELA BRASILEIRO, BRUNO ; **DE AZEREDO, AMARO AFONSO CAMPOS**; RUARO, LUCIMERIS ; DE OLIVEIRA, RICARDO AUGUSTO ; BESPALHOK FILHO, JOÃO CARLOS . Reaction to Brown Rust and Presence of the Bru1 Gene in Brazil/RIDESA Sugarcane Parents. SUGAR TECH, v. 23, p. 1-8, 2021.](https://link.springer.com/article/10.1007%2Fs12355-021-00992-6)
+
+### 2020
+
+-   [VERISSIMO, MARIO ALVARO ALOISIO ; **AZEREDO, AMARO AFONSO CAMPOS DE** ; SILVA, SERGIO DELMAR DOS ANJOS E ; BRASILEIRO, BRUNO PORTELA ; BESPALHOK FILHO, JOÃO CARLOS ; DAROS, EDELCLAITON ; OLIVEIRA, RICARDO AUGUSTO DE . Selection of sugarcane families and clones under cold stress. CIENCIA RURAL, v. 50, p. 1-13, 2020.](https://www.scielo.br/j/cr/a/SBKPFCfh434FRFMYsn84Dtc/?lang=en)
+
+-   [**DE AZEREDO, AMARO AFONSO CAMPOS**; BHERING, LEONARDO LOPES ; DE OLIVEIRA, RICARDO AUGUSTO ; CRUZ, COSME DAMIÃO ; BESPALHOK FILHO, JOÃO CARLOS ; BRASILEIRO, BRUNO PORTELA . Fuzzy controller in the selection of sugarcane and energy cane ideotypes. EUPHYTICA (DORDRECHT. ONLINE), v. 216, p. 1-15, 2020.](https://link.springer.com/article/10.1007%2Fs10681-020-02626-6)
+
+-   [JUNIOR, A. R. ; **de AZEREDO, A. A. C.**; ROMANO, T. ; BRASILEIRO, B.P. ; BESPALHOK FILHO, J. C. ; RUARO, LUCIMERIS ; DAROS, E. ; Oliveira, R.A. . Energy-cane: resistant to major sugarcane diseases?. Idesia (Arica), v. 38, p. 17, 2020.](https://www.scielo.cl/pdf/idesia/v38n4/0718-3429-idesia-38-04-17.pdf)
+
+### 2017
+
+-   [**de AZEREDO, A. A. C.**; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; SILVEIRA, L. C. I. ; Oliveira, R.A. ; BESPALHOK FILHO, J. C. ; DAROS, E. . Comparison between different selection indices in energy cane breeding. Genetics and Molecular Research, v. 16, p. 1-12, 2017.](http://www.funpecrp.com.br/gmr/year2017/vol16-1/pdf/gmr-16-01-gmr.16019535.pdf)
+
+- [JÚNIOR, A.R. FERNANDES ; **DE AZEREDO, A.A.C.** ; DE OLIVEIRA, R.A. ; FILHO, J.C. BESPALHOK ; IDO, O.T. ; DAROS, E. ; BRASILEIRO, B.P. . RESEARCH-ARTILE Agricultural performance and genetic parameters for yield-related traits of sugar- and energy cane families derived from planned crosses. GENETICS AND MOLECULAR RESEARCH, v. 16, p. 1-11, 2017.](http://www.funpecrp.com.br/gmr/year2017/vol16-3/pdf/gmr-16-03-gmr.16039773.pdf)
+
+### 2016
+
+- [**DE AZEREDO, A.A.C.**; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; BARBOSA, M.H.P. . Selection in sugarcane based on inbreeding depression. Genetics and Molecular Research, v. 15, p. 1-11, 2016.](http://www.funpecrp.com.br/gmr/year2016/vol15-2/pdf/gmr7965.pdf)
+
+## Divulgação científica 
+- Materia gráfico Animado  (inserir)
+- Blog matéria em sites jornais rádio ... (inserir)  
+
+## Livros 
+-  Ridesa 1 (inserir)
+-  Ridesa 2 (inserir)
+
 
