@@ -6,22 +6,22 @@
       "description": "Este espaço será destinado para as principais publicações desenvolvidas durante minha trajetoria acadêmica. ",
       "author": [],
       "contents": "\r\nArtigos Publicados\r\n2021\r\nBORELLA, JULIANE ; PORTELA BRASILEIRO, BRUNO ; DE AZEREDO, AMARO AFONSO CAMPOS; RUARO, LUCIMERIS ; DE OLIVEIRA, RICARDO AUGUSTO ; BESPALHOK FILHO, JOÃO CARLOS . Reaction to Brown Rust and Presence of the Bru1 Gene in Brazil/RIDESA Sugarcane Parents. SUGAR TECH, v. 23, p. 1-8, 2021.\r\n2020\r\nVERISSIMO, MARIO ALVARO ALOISIO ; AZEREDO, AMARO AFONSO CAMPOS DE ; SILVA, SERGIO DELMAR DOS ANJOS E ; BRASILEIRO, BRUNO PORTELA ; BESPALHOK FILHO, JOÃO CARLOS ; DAROS, EDELCLAITON ; OLIVEIRA, RICARDO AUGUSTO DE . Selection of sugarcane families and clones under cold stress. CIENCIA RURAL, v. 50, p. 1-13, 2020.\r\nDE AZEREDO, AMARO AFONSO CAMPOS; BHERING, LEONARDO LOPES ; DE OLIVEIRA, RICARDO AUGUSTO ; CRUZ, COSME DAMIÃO ; BESPALHOK FILHO, JOÃO CARLOS ; BRASILEIRO, BRUNO PORTELA . Fuzzy controller in the selection of sugarcane and energy cane ideotypes. EUPHYTICA (DORDRECHT. ONLINE), v. 216, p. 1-15, 2020.\r\nJUNIOR, A. R. ; de AZEREDO, A. A. C.; ROMANO, T. ; BRASILEIRO, B.P. ; BESPALHOK FILHO, J. C. ; RUARO, LUCIMERIS ; DAROS, E. ; Oliveira, R.A. . Energy-cane: resistant to major sugarcane diseases?. Idesia (Arica), v. 38, p. 17, 2020.\r\n2017\r\nde AZEREDO, A. A. C.; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; SILVEIRA, L. C. I. ; Oliveira, R.A. ; BESPALHOK FILHO, J. C. ; DAROS, E. . Comparison between different selection indices in energy cane breeding. Genetics and Molecular Research, v. 16, p. 1-12, 2017.\r\nJÚNIOR, A.R. FERNANDES ; DE AZEREDO, A.A.C. ; DE OLIVEIRA, R.A. ; FILHO, J.C. BESPALHOK ; IDO, O.T. ; DAROS, E. ; BRASILEIRO, B.P. . RESEARCH-ARTILE Agricultural performance and genetic parameters for yield-related traits of sugar- and energy cane families derived from planned crosses. GENETICS AND MOLECULAR RESEARCH, v. 16, p. 1-11, 2017.\r\n2016\r\nDE AZEREDO, A.A.C.; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; BARBOSA, M.H.P. . Selection in sugarcane based on inbreeding depression. Genetics and Molecular Research, v. 15, p. 1-11, 2016.\r\nDivulgação científica\r\nMateria gráfico Animado (inserir)\r\nBlog matéria em sites jornais rádio … (inserir)\r\nLivros\r\nRidesa 1 (inserir)\r\nRidesa 2 (inserir)\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-10-18T15:21:05-03:00"
+      "last_modified": "2021-10-18T15:54:02-03:00"
     },
     {
       "path": "blog.html",
       "title": "Projetos",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-10-18T15:21:07-03:00"
+      "last_modified": "2021-10-18T15:54:04-03:00"
     },
     {
       "path": "index.html",
       "title": "Afonso Campos",
       "description": "Site para armazenar alguns projetos reais e fictícios. \n",
       "author": [],
-      "contents": "\r\n\r\nResumo:\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-10-18T15:21:08-03:00"
+      "contents": "\r\n\r\nUniversidades\r\n\r\n\r\n{\"x\":{\"options\":{\"crs\":{\"crsClass\":\"L.CRS.EPSG3857\",\"code\":null,\"proj4def\":null,\"projectedBounds\":null,\"options\":{}}},\"calls\":[{\"method\":\"addTiles\",\"args\":[\"//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\",null,null,{\"minZoom\":0,\"maxZoom\":18,\"tileSize\":256,\"subdomains\":\"abc\",\"errorTileUrl\":\"\",\"tms\":false,\"noWrap\":false,\"zoomOffset\":0,\"zoomReverse\":false,\"opacity\":1,\"zIndex\":1,\"detectRetina\":false,\"attribution\":\"&copy; <a href=\\\"http://openstreetmap.org\\\">OpenStreetMap<\\/a> contributors, <a href=\\\"http://creativecommons.org/licenses/by-sa/2.0/\\\">CC-BY-SA<\\/a>\"}]},{\"method\":\"addMarkers\",\"args\":[[-6.96179,-20.7546,-25.410177],[-35.6953,-42.8825,-49.251011],{\"iconUrl\":{\"data\":\"https://leafletjs.com/examples/custom-icons/leaf-green.png\",\"index\":0},\"iconWidth\":38,\"iconHeight\":95,\"iconAnchorX\":22,\"iconAnchorY\":94,\"shadowUrl\":{\"data\":\"https://leafletjs.com/examples/custom-icons/leaf-shadow.png\",\"index\":0},\"shadowWidth\":50,\"shadowHeight\":64,\"shadowAnchorX\":4,\"shadowAnchorY\":62},null,null,{\"interactive\":true,\"draggable\":false,\"keyboard\":true,\"title\":\"\",\"alt\":\"\",\"zIndexOffset\":0,\"opacity\":1,\"riseOnHover\":false,\"riseOffset\":250},null,null,null,null,[\"Universidade Federal da Paraíba\",\"Universidade Federal de Viçosa\",\"Universidade federal do Paraná\"],{\"interactive\":false,\"permanent\":false,\"direction\":\"auto\",\"opacity\":1,\"offset\":[0,0],\"textsize\":\"10px\",\"textOnly\":false,\"className\":\"\",\"sticky\":true},null]}],\"limits\":{\"lat\":[-25.410177,-6.96179],\"lng\":[-49.251011,-35.6953]}},\"evals\":[],\"jsHooks\":[]}\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-10-18T15:54:07-03:00"
     }
   ],
   "collections": ["posts/posts.json"]

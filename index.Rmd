@@ -16,4 +16,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![](Afonso_Capa.jpg)
 
-## Resumo:
+## Universidades 
+
+```{r}
+library(leaflet)
+data(quakes)
+
+universidades <- data.frame(
+  Universidade = c("Universidade Federal da Paraíba" ,
+                   "Universidade Federal de Viçosa",
+                  "Universidade federal do Paraná"
+                   ),
+  lat = c( -6.96179,-20.7546,-25.410177), 
+  long = c(-35.6953, -42.8825,-49.251011))
+greenLeafIcon <- makeIcon(
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+
+leaflet(data = universidades) %>% addTiles() %>%
+  addMarkers(~long, ~lat, icon = greenLeafIcon, label = ~as.character(Universidade))
+```
+
