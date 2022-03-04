@@ -7,12 +7,18 @@ description: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+```{=html}
 <style>
 body {
 text-align: justify}
 </style>
-
+```
 ## Artigos Publicados
+
+### 2022
+
+-   [BORELLA, JULIANE ; BRASILEIRO, B.P. ; **DE AZEREDO, A.A.C.** ; RUARO, LUCIMERIS ; DE OLIVEIRA, R.A. ; BESPALHOK FILHO, JOÃO CARLOS . Resistance to orange rust associated with the G1 molecular marker in parents of Brazilian RB sugarcane varieties. GENETICS AND MOLECULAR RESEARCH. v. 21, p. 1-12, 2022](https://www.geneticsmr.com/articles/resistance-orange-rust-associated-g1-molecular-marker-parents-brazilian-rb-sugarcane)
 
 ### 2021
 
@@ -30,18 +36,18 @@ text-align: justify}
 
 -   [**de AZEREDO, A. A. C.**; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; SILVEIRA, L. C. I. ; Oliveira, R.A. ; BESPALHOK FILHO, J. C. ; DAROS, E. . Comparison between different selection indices in energy cane breeding. Genetics and Molecular Research, v. 16, p. 1-12, 2017.](http://www.funpecrp.com.br/gmr/year2017/vol16-1/pdf/gmr-16-01-gmr.16019535.pdf)
 
-- [JÚNIOR, A.R. FERNANDES ; **DE AZEREDO, A.A.C.** ; DE OLIVEIRA, R.A. ; FILHO, J.C. BESPALHOK ; IDO, O.T. ; DAROS, E. ; BRASILEIRO, B.P. . RESEARCH-ARTILE Agricultural performance and genetic parameters for yield-related traits of sugar- and energy cane families derived from planned crosses. GENETICS AND MOLECULAR RESEARCH, v. 16, p. 1-11, 2017.](http://www.funpecrp.com.br/gmr/year2017/vol16-3/pdf/gmr-16-03-gmr.16039773.pdf)
+-   [JÚNIOR, A.R. FERNANDES ; **DE AZEREDO, A.A.C.** ; DE OLIVEIRA, R.A. ; FILHO, J.C. BESPALHOK ; IDO, O.T. ; DAROS, E. ; BRASILEIRO, B.P. . RESEARCH-ARTILE Agricultural performance and genetic parameters for yield-related traits of sugar- and energy cane families derived from planned crosses. GENETICS AND MOLECULAR RESEARCH, v. 16, p. 1-11, 2017.](http://www.funpecrp.com.br/gmr/year2017/vol16-3/pdf/gmr-16-03-gmr.16039773.pdf)
 
 ### 2016
 
-- [**DE AZEREDO, A.A.C.**; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; BARBOSA, M.H.P. . Selection in sugarcane based on inbreeding depression. Genetics and Molecular Research, v. 15, p. 1-11, 2016.](http://www.funpecrp.com.br/gmr/year2016/vol15-2/pdf/gmr7965.pdf)
+-   [**DE AZEREDO, A.A.C.**; BHERING, L.L. ; BRASILEIRO, B.P. ; CRUZ, C.D. ; BARBOSA, M.H.P. . Selection in sugarcane based on inbreeding depression. Genetics and Molecular Research, v. 15, p. 1-11, 2016.](http://www.funpecrp.com.br/gmr/year2016/vol15-2/pdf/gmr7965.pdf)
 
-## Divulgação científica 
-- Materia gráfico Animado  (inserir)
-- Blog matéria em sites jornais rádio ... (inserir)  
+## Divulgação científica
 
-## Livros 
--  Ridesa 1 (inserir)
--  Ridesa 2 (inserir)
+-   Materia gráfico Animado (inserir)
+-   Blog matéria em sites jornais rádio ... (inserir)
 
+## Livros
 
+-   Ridesa 1 (inserir)
+-   Ridesa 2 (inserir)
