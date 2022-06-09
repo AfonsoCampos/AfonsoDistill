@@ -2094,7 +2094,7 @@ function init_posts_list() {
     var src = $(img).attr('data-src');
     if (src) {
       $(img).attr('src', src);
-      $(img).load(function() {
+      $(img).on("load", function() {
         img.removeAttribute('data-src');
       });
     }
@@ -2140,6 +2140,7 @@ function init_posts_list() {
 
       // mark posts that match the category visible
       var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
       var posts = $('.post-metadata').map(function(idx, script) {
         var metadata = $.parseJSON($(script).html());
         var post = null;
@@ -2155,7 +2156,7 @@ function init_posts_list() {
       set_posts_visible(posts, true);
 
       // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
 
       // update the list_caption
       var list_caption = $('.posts-list-caption');
@@ -2218,6 +2219,24 @@ function init_posts_list() {
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Projetos">Projetos</h1>
+<a href="posts/2022-06-09-app-para-ajudar-a-jogar-termooo/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Shiny","Lógica","In_Utilidade"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 6, 2022</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-06-09-app-para-ajudar-a-jogar-termooo/capaapp.jpg"/>
+</div>
+<div class="description">
+<h2>Um aplicativo para ajudar a Jogar Termooo</h2>
+<div class="dt-tags">
+<div class="dt-tag">Shiny</div>
+<div class="dt-tag">Lógica</div>
+<div class="dt-tag">In_Utilidade</div>
+</div>
+<p>Um "filtrão" para ajudar a selecionar a palavra mais provável</p>
+</div>
+</a>
 <a href="posts/2021-10-18-mapas-auto-koho/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Diversidade","Agrupamento","IA","Redes Neurais"]}</script>
 <div class="metadata">
@@ -2260,7 +2279,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:Articles">Articles</a>
-<span class="category-count">(2)</span>
+<span class="category-count">(3)</span>
 </li>
 <li>
 <a href="#category:Agrupamento">Agrupamento</a>
@@ -2275,11 +2294,23 @@ function init_posts_list() {
 <span class="category-count">(1)</span>
 </li>
 <li>
+<a href="#category:In_Utilidade">In_Utilidade</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Lógica">Lógica</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
 <a href="#category:outros">outros</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
 <a href="#category:Redes_Neurais">Redes Neurais</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Shiny">Shiny</a>
 <span class="category-count">(1)</span>
 </li>
 </ul>
@@ -2289,7 +2320,7 @@ function init_posts_list() {
 <a href="#">More articles &raquo;</a>
 </div>
 </div>
-<!--/radix_placeholder_article_listing-->
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
 <h1>Projetos</h1>
