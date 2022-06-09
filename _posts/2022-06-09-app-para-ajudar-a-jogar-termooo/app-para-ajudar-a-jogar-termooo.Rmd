@@ -1,10 +1,12 @@
 ---
-title: "Um aplicativo para ajudar a Jogar Termooo"
+title: "Um aplicativo para ajudar a jogar Termooo"
 categories: 
 - Shiny
 - Lógica
 - In_Utilidade
-description: |
+- Web Scrapping
+- Aplicativo
+description: 
   Um "filtrão" para ajudar a selecionar a palavra mais provável
 author:
   - name: Afonso Campos
@@ -29,21 +31,38 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Introdução 
 
 Meus amigos e eu estávamos  viciados em jogar o [termooo](https://term.ooo/), que é a versão brasileira do wordle. Discutindo sobre as palavras mais prováveis e quem consegue manter mais dias sem perder (ofensiva), me veio a ideia de montar um pequeno app em shiny que aplicasse diferentes filtros em um banco de palavras (“semelhante” a uma árvore de decisão) conforme o jogo avançasse. 
-Apesar de ser algo com o objetivo lúdico, quando eu paro para fazer algo que nunca fiz antes, quase sempre acabo aprendendo algo que utilizo em um projeto com um problema real e realmente aprendi. 
+Apesar de ser algo com o objetivo lúdico, quando eu paro para fazer algo que nunca fiz antes, quase sempre acabo aprendendo algo que utilizo em um outro projeto de trabalho. 
 
 ## Montando o Banco de Palavras   
 
 Etapa que me tomou um tempo, primeiramente eu fiz uma raspagem em um destes sites de dicionários online com o pacote rSelenium buscando todos as palavras com 5 letras. A segunda fonte um dicionário em formato epub que também foi lido e teve as palavras de cinco selecionadas.
-Dias depois que eu já havia montado o banco de palavras inicial eu descobri um banco previamente montado de um dos outros app brasileiros com esse objetivo e incorporei ao meu banco. 
+Dias depois que eu já havia montado o banco de palavras inicial eu descobri um banco previamente montado de um dos outros app brasileiros com esse objetivo e incorporei ao meu banco que conta agora com 18.540 palavras. 
 
 
-## O aplicativo Para “buscar a palavra”
+## O aplicativo “Busca palavra”
 
 Com o banco de dados montados eu parti para prototipar os filtros, montando um esboço de forma linear em R e depois adaptando o script para o app. Dessa maneira o app final ficou da maneira que pode ser vista no vídeo abaixo. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qdMFbNXyyss" frameborder="0" allowfullscreen></iframe>
 
+Resumindo os elementos aplicativo nós temos: 
 
+- Botão Tutorial ( "**i**" verde)
+- 12 Filtros (inputs)
+- Botão chute para nova sugestão de palavra
+- Visual (output) 
+  - 4 cards
+  - 1 Tabela com as palavras restantes 
+  - 1 Gráfico com a Fequência relativa das letras em cada posição
+
+  
 ## Hospedagem do App 
 
 Estava buscando outras maneiras de por o app online ~~não gastando assim todas as horas do meu shiny.io~~ e acabei me deparando com a opção do Heroku que eu achei bem interessante. Desta maneira o app pode ser acessado no site <https://buscapalavra.herokuapp.com> 
+
+## Certamente daria para implementar...
+1. Criar um "segundo chute" com letras que não foram utilizadas antes para ajudar a eliminar mais palavras. Pode levar a mais trentativas todavia ajudar a eliminar mais palavras logo no começo.
+2. Tive problemas ao estabelecer uma hierarquia entre os filtros, considerando que são várias rodadas de preenchimento. Dessa Maneira só travei o número de letras.
+3.  Polir o layout do app e ~~gastar muito tempo~~.
+4.  Um boot para fazer responder o jogo sozinho no Rselenium  ~~perdendo a graça de vez~~.
+ 
