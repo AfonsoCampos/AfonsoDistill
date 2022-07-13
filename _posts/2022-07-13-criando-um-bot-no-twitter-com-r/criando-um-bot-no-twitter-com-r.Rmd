@@ -4,7 +4,7 @@ categories:
   - GitHub
   - Web Scraping
   - Lógica
-  - In_utilidade
+  - In_Utilidade
 description: |
    Um exemplo lúdico para aprender a usar o GitHub Actions.
 author:
