@@ -2,8 +2,8 @@
 title: "Criando um Bot no Twitter com R"
 categories: 
   - GitHub
-  - Web scraping
-  - lógica
+  - Web Scraping
+  - Lógica
   - In_utilidade
 description: |
    Um exemplo lúdico para aprender a usar o GitHub Actions.
