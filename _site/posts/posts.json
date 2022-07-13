@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2022-07-13-criando-um-bot-no-twitter-com-r/",
+    "title": "Criando um Bot no Twitter com R",
+    "description": "Um exemplo lúdico para aprender a usar o GitHub Actions.",
+    "author": [
+      {
+        "name": "Afonso Campos",
+        "url": {}
+      }
+    ],
+    "date": "2022-07-13",
+    "categories": [
+      "github"
+    ],
+    "contents": "\r\nEsse bot “nasceu” da ideia de aprender a utilizar minimamente o\r\nGitHub Actions para fazer com que meu código em R fosse executado de\r\ntempos em tempos por meio de um Cron. As aplicações no dia a dia de\r\ntrabalho são inúmeras, tais como: agendar envio de relatórios\r\nautomatizados por e-mail; raspagem de dados diárias; atualização de\r\ndasboards. Pera um exemplo simples e lúdico de aplicação pensei no\r\n“comemorarbot” que informa a data comemorativa do dia por meio de uma\r\npostagem diária no twitter.\r\nCódigo em R\r\nPrimeiramente tive que raspar uma base de dados de um site obtendo o\r\nmáximo de datas comemorativas. Em posse da base, com aproximadamente\r\n1350 datas comemorativas, eu resolvi complicar decidi escrever o código\r\nde maneira que as datas comemorativas móveis fossem ajustadas\r\nautomaticamente para o ano corrente (páscoa, carnaval, dia das mães …).\r\nPor conta disso tive que implementar funções para ajustar quase 50\r\nferiados! Mesmo tendo que ser na força bruta, pesquisando cada data no\r\ngoogle e vendo como era estipulada, isso só foi possível porque eu achei\r\num padrão na escrita da base para os feriados moveis, sendo fácil\r\nextrair para ajustar. Finalizando a parte de código em R eu tive que\r\npensar na frase da postagem com as datas, se somente um feriado frase no\r\nsingular, caso contrário, plural. Outro problema que contornei está\r\nrelacionado ao número máximo de caracteres da postagem no twitter ser\r\nsuperior a 280 (muitos feriados em um único dia). Para esse caso eu fiz\r\ncom que fossem feitas duas postagens (infelizmente não dá para fazer “o\r\nfio” para postagem encadeadas) separadamente dividindo as datas\r\ncomemorativas do dia.\r\nChaves de Acesso no Twitter\r\nAcessei a página de desenvolvedores do twitter e obter os tokens de\r\nacesso para a conta que criei (https://developer.twitter.com/en). Essa chave permite\r\nque eu faça o login na conta e execute a postagens direto do script em\r\nR.\r\nGithub Actions\r\nCom o script em R bastou eu subir para o GitHub meu stcript e uma\r\npasta “workflow” com um arquivo YAML contendo basicamente: as\r\nespecificações da máquina a ser utilizada; Cron com a hora de execução;\r\ninstalação do R e pacotes necessários para execução do código e o\r\ncaminho do script em R a ser executado. Aqui eu tive um problema. Existe\r\numa maneira de colocar as senhas criptografadas dentro do GitHub, mas eu\r\nnão consegui fazer funcionar, desta maneira tive que deixar o código no\r\nrepositório privado com as senhas dentro do script em r.\r\nO resultado\r\nO bot funciona fazendo uma pastagem todos os dias próximo das oito\r\nhoras da manhã.\r\n\r\n\r\n\r\n\r\n\r\n\r\nou veja a conta em funcionamento em: https://twitter.com/comemorarbot\r\nFinalizando, eu só consegui fazer isso funcionar graças a essas\r\nreferências:\r\nhttps://www.rostrum.blog/2020/09/21/londonmapbot/\r\nhttps://oscarbaruffa.com/twitterbot/\r\n\r\n\r\n\r\n",
+    "preview": "posts/2022-07-13-criando-um-bot-no-twitter-com-r/comemorar.jpg",
+    "last_modified": "2022-07-13T15:54:22-03:00",
+    "input_file": "criando-um-bot-no-twitter-com-r.knit.md"
+  },
+  {
     "path": "posts/2022-06-09-app-para-ajudar-a-jogar-termooo/",
     "title": "Um aplicativo para ajudar a jogar Termooo",
     "description": "Um \"filtrão\" para ajudar a selecionar a palavra mais provável",
@@ -58,9 +77,9 @@
     "categories": [
       "outros"
     ],
-    "contents": "\r\nApenas uma gráfico de código em R\r\n\r\n\r\nhist(rnorm(1000))\r\n\r\n\r\n\r\n\r\nteste de postagem do blog antigo https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "contents": "\r\nApenas uma gráfico de código\r\nem R\r\n\r\n\r\nhist(rnorm(1000))\r\n\r\n\r\n\r\n\r\nteste de postagem do blog antigo https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-10-07-blog-genetica-agrmica/genagro.jpg",
-    "last_modified": "2021-10-08T09:25:11-03:00",
-    "input_file": {}
+    "last_modified": "2022-07-13T11:50:00-03:00",
+    "input_file": "blog-genetica-agrmica.knit.md"
   }
 ]
