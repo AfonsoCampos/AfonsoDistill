@@ -1,0 +1,193 @@
+---
+title: "Desafio da Sequencia de Números"
+description: |
+  Tentando resolver o problema proposto no grupo do R Brasil programadores.
+categories: 
+- Lógica
+author:
+  - name: Afonso Campos
+    url: {}
+date: 2021-08-13
+preview: gerador.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{=html}
+<style>
+body {
+text-align: justify}
+</style>
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Esse desafio foi publicado no grupo do R Brasil e eu encontrei consegui chegar na resposta. Certamente há maneiras computacionalmente mais eficientes para resolver.
+
+# O Enunciado
+
+Desafio: criar um programa de computador que faça a sequência abaixo.
+
+Que comecem os jogos. 🙂
+
+Uma Sequência interessante, obtida de forma curiosa! (baseada na sequência dos números primos, adição, multiplicação, e na menor diferença POSITIVA para o quadrado perfeito mais próximo) Vamos lá:
+
+Os três primeiros números primos:
+
+2, 3, 5
+
+Fazemos:
+
+2 + 3 × 5 = 17
+
+Procuramos o maior quadrado perfeito MENOR do que 17.
+
+É 16
+
+Fazemos
+
+17 - 16 = 1
+
+Então o primeiro número da sequência é 1
+
+Construindo o segundo número da sequência (vejam o trabalhão que dá):
+
+Pegamos os três próximos números primos (7, 11, 13) e fazemos:
+
+7 + 11 × 13 = 150
+
+O maior quadrado perfeito MENOR do 150 é 144
+
+150 - 144 = 6
+
+6 é o segundo número da sequência
+
+O terceiro número da sequência:
+
+Fazemos
+
+17 + 19 × 23 = 454
+
+O quadrado perfeito mais próximo (menor do que 454) é 441
+
+Então
+
+454 - 441 = 13
+
+13 é o terceiro número da sequência Para o quarto número da sequência é só usar os números primos 29, 31, 37 , e seguir a mesma lógica. Para o quinto número da sequência: usar os números primos 41, 43, 47
+
+# A Minha Resolução no R
+
+### Passo 1
+
+Considerando que eu quero que no final sejam gerados 50 números. Para isso, eu tenho que ter inicialmente 3 vezes valor desejado inicial em números primos.
+
+```{r include=TRUE}
+# Eu quero que no final ele gere 50 números 
+desejado <-  50 
+
+# Tenho que ter inicialmente 3 para cada número desejado que sofrerão as operacoes de soma e multiplicação 
+tamanho <- desejado * 3
+
+num <- 0
+
+primos <- NULL
+
+primonum <- NULL
+
+# Obtendo os números primos com um loop
+while(num >= 0 ){
+  if (num == 2) {
+    primonum <- num
+  } else if (any(num %% 2:(num-1) == 0)) {
+    FALSE
+  } else { 
+    primonum <- num
+  }
+
+    temp <- primonum
+  
+    num <- num + 1 
+  
+  primos <-unique(c(temp, primos)) 
+  
+  if(length(primos)  == tamanho){
+    primos <- sort(primos)
+    
+    break
+  }
+}
+
+primos
+
+```
+
+### Passo 2
+
+A operação a ser aplicada e sempre o primeiro + segundo \* terceiro número da sequencia.
+
+```{r}
+
+# primeiro mais o segundo vezes o terceiro 
+
+tamprimos <- length(primos)
+
+primeiro <- primos[seq(1, tamprimos, by = 3)]
+
+segundo <- primos[seq(2, tamprimos, by = 3)]
+
+terceiro <- primos[seq(3, tamprimos, by = 3)]
+
+operacao <- primeiro + segundo * terceiro 
+
+operacao
+
+```
+
+### Passo 3
+
+A raiz quedrada de cada numero da operação do passo 2 que não pode ter resto. Caso tenha, buscar o numero inteiro anterior mais próximo que satisfaça essa condição.
+
+```{r}
+
+raizresult <- NULL 
+
+for(i in operacao){
+  num <- i 
+
+    while (num >=0) {
+    
+    if(sqrt(num) %% 1 == 0){
+      
+      temp2 <- num 
+      
+      break
+      
+      }else{num <- num - 1}
+    
+  }
+  
+  raizresult <- c(raizresult, temp2)
+  
+  }
+
+raizresult
+
+```
+
+### Passo 4
+
+Subitrair o passo 2 do passo 3.
+
+```{r}
+# resultado final 
+final <- operacao - raizresult
+
+final 
+```
+
+<img src="https://i.pinimg.com/originals/3f/e0/e1/3fe0e111282788ee6129d327ddc796bb.gif" width="640" height="355"/>

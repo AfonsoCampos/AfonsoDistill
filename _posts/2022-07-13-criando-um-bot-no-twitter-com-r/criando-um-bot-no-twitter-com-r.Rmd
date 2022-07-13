@@ -17,21 +17,21 @@ output:
     self_contained: false
 ---
 
+```{=html}
 <style>
 body {
 text-align: justify}
 </style>
-
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 Esse bot "nasceu" da ideia de aprender a utilizar minimamente o GitHub Actions para fazer com que meu código em R fosse executado de tempos em tempos por meio de um Cron. As aplicações no dia a dia de trabalho são inúmeras, tais como: agendar envio de relatórios automatizados por e-mail; raspagem de dados diárias; atualização de dasboards. Pera um exemplo simples e lúdico de aplicação pensei no "comemorarbot" que informa a data comemorativa do dia por meio de uma postagem diária no twitter.
 
-
 ## Código em R
 
-Primeiramente tive que raspar uma base de dados de um site obtendo o máximo de datas comemorativas. Em posse da base, com aproximadamente 1350 datas comemorativas, eu resolvi complicar decidi escrever o código de maneira que as datas comemorativas móveis fossem ajustadas automaticamente para o ano corrente (páscoa, carnaval, dia das mães ...). Por conta disso tive que implementar funções para ajustar quase 50 feriados! Mesmo tendo que ser na força bruta, pesquisando cada data no google e vendo como era estipulada, isso só foi possível porque eu achei um padrão na escrita da base para os feriados moveis, sendo fácil extrair para ajustar. Finalizando a parte de código em R eu tive que pensar na frase da postagem com as datas, se somente um feriado frase no singular, caso contrário, plural. Outro problema que contornei está relacionado ao número máximo de caracteres da postagem no twitter ser superior a 280 (muitos feriados em um único dia). Para esse caso eu fiz com que fossem feitas duas postagens (infelizmente não dá para fazer "o fio" para postagem encadeadas) separadamente dividindo as datas comemorativas do dia.
+Primeiramente tive que raspar uma base de dados de um site obtendo o máximo de datas comemorativas. Em posse da base, com aproximadamente 1350 datas comemorativas, eu ~~resolvi complicar~~ decidi escrever o código de maneira que as datas comemorativas móveis fossem ajustadas automaticamente para o ano corrente (páscoa, carnaval, dia das mães ...). Por conta disso tive que implementar funções para ajustar quase 50 feriados! Mesmo tendo que ser na força bruta, pesquisando cada data no google e vendo como era estipulada, isso só foi possível porque eu achei um padrão na escrita da base para os feriados moveis, sendo fácil extrair para ajustar. Finalizando a parte de código em R eu tive que pensar na frase da postagem com as datas, se somente um feriado frase no singular, caso contrário, plural. Outro problema que contornei está relacionado ao número máximo de caracteres da postagem no twitter ser superior a 280 (muitos feriados em um único dia). Para esse caso eu fiz com que fossem feitas duas postagens (infelizmente não dá para fazer "o fio" para postagem encadeadas) separadamente dividindo as datas comemorativas do dia.
 
 ## Chaves de Acesso no Twitter
 
@@ -51,17 +51,15 @@ tweet_screenshot(tweet_url("comemorarbot", "1547175481128124416"))
 
 ```
 
-
 ```{r}
 
 tweet_screenshot(tweet_url("comemorarbot", "1546812876559552514"))
 
 ```
- 
+
 ou veja a conta em funcionamento em: <https://twitter.com/comemorarbot>
 
 Finalizando, eu só consegui fazer isso funcionar graças a essas referências:
 
-- <https://www.rostrum.blog/2020/09/21/londonmapbot/>
-- <https://oscarbaruffa.com/twitterbot/>
-
+-   <https://www.rostrum.blog/2020/09/21/londonmapbot/>
+-   <https://oscarbaruffa.com/twitterbot/>
