@@ -11,11 +11,14 @@
     ],
     "date": "2022-07-13",
     "categories": [
-      "github"
+      "GitHub",
+      "Web scraping",
+      "lógica",
+      "In_utilidade"
     ],
     "contents": "\r\nEsse bot “nasceu” da ideia de aprender a utilizar minimamente o\r\nGitHub Actions para fazer com que meu código em R fosse executado de\r\ntempos em tempos por meio de um Cron. As aplicações no dia a dia de\r\ntrabalho são inúmeras, tais como: agendar envio de relatórios\r\nautomatizados por e-mail; raspagem de dados diárias; atualização de\r\ndasboards. Pera um exemplo simples e lúdico de aplicação pensei no\r\n“comemorarbot” que informa a data comemorativa do dia por meio de uma\r\npostagem diária no twitter.\r\nCódigo em R\r\nPrimeiramente tive que raspar uma base de dados de um site obtendo o\r\nmáximo de datas comemorativas. Em posse da base, com aproximadamente\r\n1350 datas comemorativas, eu resolvi complicar decidi escrever o código\r\nde maneira que as datas comemorativas móveis fossem ajustadas\r\nautomaticamente para o ano corrente (páscoa, carnaval, dia das mães …).\r\nPor conta disso tive que implementar funções para ajustar quase 50\r\nferiados! Mesmo tendo que ser na força bruta, pesquisando cada data no\r\ngoogle e vendo como era estipulada, isso só foi possível porque eu achei\r\num padrão na escrita da base para os feriados moveis, sendo fácil\r\nextrair para ajustar. Finalizando a parte de código em R eu tive que\r\npensar na frase da postagem com as datas, se somente um feriado frase no\r\nsingular, caso contrário, plural. Outro problema que contornei está\r\nrelacionado ao número máximo de caracteres da postagem no twitter ser\r\nsuperior a 280 (muitos feriados em um único dia). Para esse caso eu fiz\r\ncom que fossem feitas duas postagens (infelizmente não dá para fazer “o\r\nfio” para postagem encadeadas) separadamente dividindo as datas\r\ncomemorativas do dia.\r\nChaves de Acesso no Twitter\r\nAcessei a página de desenvolvedores do twitter e obter os tokens de\r\nacesso para a conta que criei (https://developer.twitter.com/en). Essa chave permite\r\nque eu faça o login na conta e execute a postagens direto do script em\r\nR.\r\nGithub Actions\r\nCom o script em R bastou eu subir para o GitHub meu stcript e uma\r\npasta “workflow” com um arquivo YAML contendo basicamente: as\r\nespecificações da máquina a ser utilizada; Cron com a hora de execução;\r\ninstalação do R e pacotes necessários para execução do código e o\r\ncaminho do script em R a ser executado. Aqui eu tive um problema. Existe\r\numa maneira de colocar as senhas criptografadas dentro do GitHub, mas eu\r\nnão consegui fazer funcionar, desta maneira tive que deixar o código no\r\nrepositório privado com as senhas dentro do script em r.\r\nO resultado\r\nO bot funciona fazendo uma pastagem todos os dias próximo das oito\r\nhoras da manhã.\r\n\r\n\r\n\r\n\r\n\r\n\r\nou veja a conta em funcionamento em: https://twitter.com/comemorarbot\r\nFinalizando, eu só consegui fazer isso funcionar graças a essas\r\nreferências:\r\nhttps://www.rostrum.blog/2020/09/21/londonmapbot/\r\nhttps://oscarbaruffa.com/twitterbot/\r\n\r\n\r\n\r\n",
     "preview": "posts/2022-07-13-criando-um-bot-no-twitter-com-r/comemorar.jpg",
-    "last_modified": "2022-07-13T15:54:22-03:00",
+    "last_modified": "2022-07-13T16:04:08-03:00",
     "input_file": "criando-um-bot-no-twitter-com-r.knit.md"
   },
   {
@@ -33,12 +36,12 @@
       "Shiny",
       "Lógica",
       "In_Utilidade",
-      "Web Scrapping",
+      "Web Scraping",
       "Aplicativo"
     ],
     "contents": "\r\nIntrodução\r\nMeus amigos e eu estávamos viciados em jogar o termooo, que é a versão brasileira do\r\nwordle. Discutindo sobre as palavras mais prováveis e quem consegue\r\nmanter mais dias sem perder (ofensiva), me veio a ideia de montar um\r\npequeno app em shiny que aplicasse diferentes filtros em um banco de\r\npalavras (“semelhante” a uma árvore de decisão) conforme o jogo\r\navançasse. Apesar de ser algo com o objetivo lúdico, quando eu paro para\r\nfazer algo que nunca fiz antes, quase sempre acabo aprendendo algo que\r\nutilizo em um outro projeto de trabalho.\r\nMontando o Banco de Palavras\r\nEtapa que me tomou um tempo, primeiramente eu fiz uma raspagem em um\r\ndestes sites de dicionários online com o pacote rSelenium buscando todos\r\nas palavras com 5 letras. A segunda fonte um dicionário em formato epub\r\nque também foi lido e teve as palavras de cinco selecionadas. Dias\r\ndepois que eu já havia montado o banco de palavras inicial eu descobri\r\num banco previamente montado de um dos outros app brasileiros com esse\r\nobjetivo e incorporei ao meu banco que conta agora com 18.540\r\npalavras.\r\nO aplicativo “Busca palavra”\r\nCom o banco de dados montados eu parti para prototipar os filtros,\r\nmontando um esboço de forma linear em R e depois adaptando o script para\r\no app. Dessa maneira o app final ficou da maneira que pode ser vista no\r\nvídeo abaixo.\r\n\r\n\r\nResumindo os elementos aplicativo nós temos:\r\nBotão Tutorial ( “i” verde)\r\n12 Filtros (inputs)\r\nBotão chute para nova sugestão de palavra\r\nVisual (output)\r\n4 cards\r\n1 Tabela com as palavras restantes\r\n1 Gráfico com a Fequência relativa das letras em cada posição\r\n\r\nHospedagem do App\r\nEstava buscando outras maneiras de por o app online não gastando\r\nassim todas as horas do meu shiny.io e acabei me deparando com a\r\nopção do Heroku que eu achei bem interessante. Desta maneira o app pode\r\nser acessado no site https://buscapalavra.herokuapp.com\r\nCertamente daria para\r\nimplementar…\r\nCriar um “segundo chute” com letras que não foram utilizadas antes\r\npara ajudar a eliminar mais palavras. Pode levar a mais trentativas\r\ntodavia ajudar a eliminar mais palavras logo no começo.\r\nTive problemas ao estabelecer uma hierarquia entre os filtros,\r\nconsiderando que são várias rodadas de preenchimento. Dessa Maneira só\r\ntravei o número de letras.\r\nPolir o layout do app e gastar muito tempo.\r\nUm boot para fazer responder o jogo sozinho no Rselenium\r\nperdendo a graça de vez.\r\n\r\n\r\n\r\n",
     "preview": "posts/2022-06-09-app-para-ajudar-a-jogar-termooo/capaapp.jpg",
-    "last_modified": "2022-07-06T07:42:29-03:00",
+    "last_modified": "2022-07-13T16:03:17-03:00",
     "input_file": "app-para-ajudar-a-jogar-termooo.knit.md"
   },
   {

@@ -4,7 +4,7 @@ categories:
 - Shiny
 - Lógica
 - In_Utilidade
-- Web Scrapping
+- Web Scraping
 - Aplicativo
 description: 
   Um "filtrão" para ajudar a selecionar a palavra mais provável
