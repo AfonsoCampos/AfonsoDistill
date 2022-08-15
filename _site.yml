@@ -14,9 +14,9 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "Publicacoes"
+    - text: "Publicações"
       href: about.html
-    - text: "Projetos"
+    - text: "Postagens"
       href: blog.html
     - icon: fa fa-linkedin
       href: https://www.linkedin.com/in/afonsoca

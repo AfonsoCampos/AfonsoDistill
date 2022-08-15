@@ -26,7 +26,7 @@ text-align: justify}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Esse desafio foi publicado no grupo do R Brasil e eu encontrei consegui chegar na resposta. Certamente há maneiras computacionalmente mais eficientes para resolver.
+Esse desafio foi publicado no grupo do R Brasil e eu consegui chegar na resposta. Certamente há maneiras computacionalmente mais eficientes para resolver.
 
 # O Enunciado
 

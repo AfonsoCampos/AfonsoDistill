@@ -1,7 +1,6 @@
 ---
-title: "Afonso Campos"
-description: |
- Site para armazenar alguns projetos reais e fictícios. 
+title: "Bem-vindo!"
+description: "Meu site de Portifólio"
 site: distill::distill_website
 ---
 
@@ -17,9 +16,20 @@ body {
 text-align: justify}
 </style>
 
-![](Afonso_Capa.jpg)
+```{r, echo=FALSE, out.width="40%", fig.align='center'}
+knitr::include_graphics("afonso_capa.png")
+```
 
-## Universidades 
+Olá, meu nome é Amaro Afonso Campos de Azeredo, mas todos me chamam apenas de Afonso.  Minha trajetória acadêmica iniciou-se quando cursei agronomia na universidade federal da paraíba em 2006. No segundo semestre do curso conheci o laboratório de biotecnologia vegetal e o meu futuro orientador o professor Maílson Monteiro do Rêgo, que lecionava a disciplina de genética. Estagiei durante quase 4 anos com micropropagação (via cultivo in-vitro) de várias culturas, mas a grande influência no que eu queria fazer futuramente na época de graduação foi ser monitor de genética por dois anos. 
+
+Com a proximidade do final da graduação eu comecei a “cultivar” a ideia de tentar um mestrado, meu orientador e a esposa dele fizeram o doutorado na Universidade Federal de Viçosa, em minas gerais, e sempre falaram muito bem dos docentes desta instituição. Na verdade, a boa fama da UFV sempre foi forte para todos que passam pelas ciências agrárias/biológicas. 
+
+Passei na prova no processo de seleção na UFV dando início ao meu mestrado em, Genética e Melhoramento, e posteriormente o doutorado,  no laboratório de bioinformática do professor Leonardo Lopes Behring. O professor Leonardo permitiu que eu escolhesse a cultura que era de meu interesse trabalhar uma vez que o foco do laboratório era análise de dados independentemente da existência física ou ou não (in-silico) de um experimento para ser analisado.
+
+Nesta época havia um novo boom da cana-de-açúcar, com popularização cada vez maior dos carros flex além da aptidão natural da cultura para produção de açúcares. Isso fez com que a Monsanto,  um grande player no mercado de melhoramento (hoje adquirida pala Bayer), comprasse uma empresa brasileira de melhoramento genético da cana-de-açúcar (CanaVialis). Esses motivos me fizeram iniciar meus estudos de doutorado e mestrado com a cultura da cana-de-açúcar tanto no mestrado quanto no doutorado.  
+
+Durante este tempo senti na pele a fama do ensino de ponta desta instituição (provas com duração de mais de 4 horas) e tive a oportunidade de conviver com excelentes profissionais das mais diversas áreas, dentro de fora da universidade. Todavia, com a proximidade do termino do doutorado fiquei com a sensação que deveria ter sugado mais todo o conhecimento disponível dentro do programa de melhoramento genético. 
+ 
 
 ```{r}
 library(leaflet)
