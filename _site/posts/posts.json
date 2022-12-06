@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2022-12-06-prottipo-aplicativo-ensaios-multiambientes/",
+    "title": "Protótipo De Aplicativo Para Ensaios Multiambientes",
+    "description": "Recomendando Genótipos considerando diferentes ambientes de cultivo",
+    "author": [
+      {
+        "name": "Afonso Campos",
+        "url": {}
+      }
+    ],
+    "date": "2022-09-06",
+    "categories": [
+      "Shiny",
+      "Aplicativo",
+      "Melhoramento Genético"
+    ],
+    "contents": "\r\n1 – Introdução\r\nDurante os 5 anos do meu pós-doutoramento, boa parte dos meus estudos\r\nfoi dedicada ao desenvolvimentos dashboards e aplicativos para o\r\nprograma de melhoramento da cana-de-açúcar, que são utilizados para\r\ntomada de decisão internamente, e por motivos óbvios são confidenciais.\r\nDeveria ter me preocupado com isto na época buscando desenvolver\r\nferramentas que eu pudesse divulgar, formando assim meu portifólio,\r\nutilizando exemplos com dados abertos. Todavia, isso toma tempo e eu\r\nestava bastante atarefado. Pensando em correr atrás do prejuízo,\r\ndesenvolvi esse protótipo de aplicativo que tem como objetivos\r\ncompreender quais genótipos performam melhor considerando os diferentes\r\nambientes em que são avaliados e mostrar o potencial de se utilizar o\r\nShiny para o desenvolvimento de um aplicativo para agilizar a obtenção\r\ndas análises em um ambiente corporativo.\r\n2 – Porque fazer um app?\r\nAcredito que toda a empresa que trabalha com análise de dados tenha\r\nprotocolos pré-estabelecidos. Para facilitar a vida de quem analisa e/ou\r\nconsome os dados, várias estratégias podem ser adotadas. O\r\ndesenvolvimento de um app tem como principal finalidade facilitar a vida\r\ndo usuário final, que sabe interpretar a saída dos dados, mas não tem\r\nhabilidade em programação e/ou tempo hábil para ficar programando. Como\r\no app e executado em um servidor, problemas de\r\ninstalação/compatibilidade também são evitados.\r\n3 – Onde fazer?\r\nPoderia usar o Power BI que é o novo queridinho da parte de\r\ndashboards? A resposta é sim, daria para utilizar o Power BI conectado a\r\num banco de dados e com a maioria das análises rodando em R no plano de\r\nfundo. Fiz alguns dashboards assim nos tempos do pós-doutoramento, mas é\r\num trabalho infernal devido ao número de pacotes suportados pelo Power\r\nBI ser limitado. Sempre que queria algo a mais, tinha que investigar\r\ntodo o código e, em algumas vezes reescrever, todas as funções do pacote\r\nque queria utilizar gerando várias linhas de códigos que as vezes tinham\r\nque ser repetidas em vários gráficos e tabelas de uma mesma\r\nsessão.\r\nTirando este problema tem a parte de exportação das análises que eu acho\r\nterrível também. Vou defender o Power BI, caso o objetivo fosse o\r\ndashboard para uma apresentação final de resultados consolidados\r\nbuscando um impacto visual certamente o Power BI seria excelente. Meu\r\npróximo exercício de portifólio (que será o próximo post) será o\r\ndesenvolvimento de um dashboard em Power-bi.\r\n4- Como Fazer?\r\nPensando nos entraves do Power BI, minha opção foi desenvolver o app\r\nem shiny. Mas o que é o shiny? Shiny é um pacote em R (recentemente\r\ntambém disponível para python) que facilita a criação e desenvolvimento\r\naplicativos web interativos.\r\nMas quais são as vantagens? Vou pontuar aqui as principais vantagens\r\npara o que eu desenvolvi: 1. Inúmeras maneiras de hospedar o aplicativo;\r\n2. Além da opção de estar conectado a uma base de dados na nuvem, tal\r\ncomo o Power-bi, eu posso fazer upload de dados de maneira manual (sendo\r\nestá a opção que eu utilizei); 3. Possibilidade de gerar relatórios\r\npersonalizados utilizando Rmakdown gerando documentos formato word que\r\npodem ser baixados pelo usuário ao final da análise para uma nova\r\nconsulta e/ou compartilhamento. 4. Considerando que 99% das análises que\r\neu faço são desenvolvidas em R, sendo o shiny um “pacote” do R, não\r\nexiste entrave de desenvolvimento.\r\n5 – O Protótipo Finalizado\r\nO resultado final pode ser visto no vídeo abaixo.\r\n\r\n\r\n6 – Considerações finais.\r\nCertamente eu poderia ter colocado mais procedimentos, todavia, o\r\nprocesso de desenvolvimento de uma aplicação é constante. Modificações\r\nsão implementadas conforme as necessidades de quem vai consumir os dados\r\npara tomada de decisão e o surgimento de novos procedimentos. Desta\r\nmaneira, acredito que o propósito de desenvolvimento deste protótipo,\r\nmostrando o potencial da ferramenta, foi atingido.\r\n\r\n\r\n\r\n",
+    "preview": "posts/2022-12-06-prottipo-aplicativo-ensaios-multiambientes/multi.jpg",
+    "last_modified": "2022-12-06T11:30:34-03:00",
+    "input_file": "prottipo-aplicativo-ensaios-multiambientes.knit.md"
+  },
+  {
     "path": "posts/2022-07-13-criando-um-bot-no-twitter-com-r/",
     "title": "Criando um Bot no Twitter com R",
     "description": "Um exemplo lúdico para aprender a usar o GitHub Actions.",
