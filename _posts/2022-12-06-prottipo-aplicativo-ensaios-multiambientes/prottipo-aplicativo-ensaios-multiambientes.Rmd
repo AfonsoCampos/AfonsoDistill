@@ -26,23 +26,23 @@ text-align: justify}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 1 – Introdução 
+## 1. Introdução 
 
-Durante os 5 anos do meu pós-doutoramento, boa parte dos meus estudos foi dedicada ao desenvolvimentos dashboards e aplicativos para o programa de melhoramento da cana-de-açúcar, que são utilizados para tomada de decisão internamente, e por motivos óbvios são confidenciais. Deveria ter me preocupado com isto na época buscando desenvolver ferramentas que eu pudesse divulgar, formando assim meu portifólio, utilizando exemplos com dados abertos. Todavia, isso toma tempo e eu estava bastante atarefado. 
+Durante os 5 anos do meu pós-doutoramento, boa parte dos meus estudos foi dedicada ao desenvolvimento dashboards e aplicativos para o programa de melhoramento da cana-de-açúcar, que são utilizados para tomada de decisão internamente, e por motivos óbvios são confidenciais. Deveria ter me preocupado com isto na época buscando desenvolver ferramentas que eu pudesse divulgar, formando assim meu portifólio, utilizando exemplos com dados abertos. Todavia, isso toma tempo e eu estava bastante atarefado. 
 Pensando em correr atrás do prejuízo, desenvolvi esse protótipo de aplicativo que tem como objetivos compreender quais genótipos performam melhor considerando os diferentes ambientes em que são avaliados e mostrar o potencial de se utilizar o Shiny para o desenvolvimento de um aplicativo para agilizar a obtenção das análises em um ambiente corporativo.  
 
-## 2 – Porque fazer um app? 
+## 2. Porque fazer um app? 
 
 Acredito que toda a empresa que trabalha com análise de dados tenha protocolos pré-estabelecidos. Para facilitar a vida de quem analisa e/ou consome os dados, várias estratégias podem ser adotadas. O desenvolvimento de um app tem como principal finalidade facilitar a vida do usuário final, que sabe interpretar a saída dos dados, mas não tem habilidade em programação e/ou tempo hábil para ficar programando. Como o app e executado em um servidor, problemas de instalação/compatibilidade também são evitados. 
 
-## 3 – Onde fazer?
+## 3. Onde fazer?
 
 Poderia usar o Power BI que é o novo queridinho da parte de dashboards?
   A resposta é sim, daria para utilizar o Power BI conectado a um banco de dados e com a maioria das análises rodando em R no plano de fundo. Fiz alguns dashboards assim nos tempos do pós-doutoramento, mas é um trabalho infernal devido ao número de pacotes suportados pelo Power BI ser limitado. Sempre que queria algo a mais, tinha que investigar todo o código e, em algumas vezes reescrever, todas as funções do pacote que queria utilizar gerando várias linhas de códigos que as vezes tinham que ser repetidas em vários gráficos e tabelas de uma mesma sessão.  
 Tirando este problema tem a parte de exportação das análises que eu acho terrível também. 
 	Vou defender o Power BI, caso o objetivo fosse o dashboard para uma apresentação final de resultados consolidados buscando um impacto visual certamente o Power BI seria excelente. Meu próximo exercício de portifólio (que será o próximo post) será o desenvolvimento de um dashboard em Power-bi. 
 
-## 4- Como Fazer? 
+## 4. Como Fazer? 
 
 Pensando nos entraves do Power BI, minha opção foi desenvolver o app em shiny. 
 Mas o que é o shiny?
@@ -54,13 +54,13 @@ Vou pontuar aqui as principais vantagens para o que eu desenvolvi:
 3.	 Possibilidade de gerar relatórios personalizados utilizando Rmakdown gerando documentos formato word que podem ser baixados pelo usuário ao final da análise para uma nova consulta e/ou compartilhamento. 
 4.	Considerando que 99% das análises que eu faço são desenvolvidas em R, sendo o shiny um “pacote” do R, não existe entrave de desenvolvimento. 
 
-## 5 – O Protótipo Finalizado 
+## 5. O Protótipo Finalizado 
  
 O resultado final pode ser visto no vídeo abaixo. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/watch?v=iuiSBl_9jjY" frameborder="0" allowfullscreen></iframe>
  
-## 6 – Considerações finais. 
+## 6. Considerações finais. 
 
 Certamente eu poderia ter colocado mais procedimentos, todavia, o processo de desenvolvimento de uma aplicação é constante. Modificações são implementadas conforme as necessidades de quem vai consumir os dados para tomada de decisão e o surgimento de novos procedimentos. Desta maneira, acredito que o propósito de desenvolvimento deste protótipo, mostrando o potencial da ferramenta, foi atingido. 
 
