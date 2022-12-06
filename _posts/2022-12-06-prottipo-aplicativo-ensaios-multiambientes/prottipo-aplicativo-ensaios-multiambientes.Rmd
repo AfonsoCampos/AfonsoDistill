@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## 1. Introdução 
 
-Durante os 5 anos do meu pós-doutoramento, boa parte dos meus estudos foi dedicada ao desenvolvimento dashboards e aplicativos para o programa de melhoramento da cana-de-açúcar, que são utilizados para tomada de decisão internamente, e por motivos óbvios são confidenciais. Deveria ter me preocupado com isto na época buscando desenvolver ferramentas que eu pudesse divulgar, formando assim meu portifólio, utilizando exemplos com dados abertos. Todavia, isso toma tempo e eu estava bastante atarefado. 
+Durante os 5 anos do meu pós-doutoramento, boa parte dos meus estudos foi dedicada ao desenvolvimento de dashboards e aplicativos para o programa de melhoramento da cana-de-açúcar, que são utilizados para tomada de decisão internamente, e por motivos óbvios são confidenciais. Deveria ter me preocupado com isto na época buscando desenvolver ferramentas que eu pudesse divulgar, formando assim meu portifólio, utilizando exemplos com dados abertos. Todavia, isso toma tempo e eu estava bastante atarefado. 
 Pensando em correr atrás do prejuízo, desenvolvi esse protótipo de aplicativo que tem como objetivos compreender quais genótipos performam melhor considerando os diferentes ambientes em que são avaliados e mostrar o potencial de se utilizar o Shiny para o desenvolvimento de um aplicativo para agilizar a obtenção das análises em um ambiente corporativo.  
 
 ## 2. Porque fazer um app? 
@@ -58,7 +58,7 @@ Vou pontuar aqui as principais vantagens para o que eu desenvolvi:
  
 O resultado final pode ser visto no vídeo abaixo. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=iuiSBl_9jjY" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iuiSBl_9jjY" frameborder="0" allowfullscreen></iframe>
  
 ## 6. Considerações finais. 
 
