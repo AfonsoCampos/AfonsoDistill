@@ -458,8 +458,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
   <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
   <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
@@ -788,6 +788,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1860,15 +1861,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2067,7 +2074,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2139,69 +2146,17 @@ text-align: justify}
 <p><img src="afonso_capa2.png" width="40%" style="display: block; margin: auto;" /></p>
 </div>
 <h2 id="do-fim-para-o-começo">Do Fim Para o Começo</h2>
-<p>Comecei essa “minibiografia” de maneira inversa para quem possa estar
-interessado apenas nas atividades mais recentes do que fiz. Detalhes de
-publicações podem ser observadas na aba <a
-href="https://afonsocampos.netlify.app/about.html"
-title="Minhas publicações">publicações</a> e/ou no meu <a
-href="http://lattes.cnpq.br/5655255986342326"
-title="meu curriculum lattes"><em>lattes</em></a>. Outras Atividades,
-relacionadas ao estudo de novas ferramentas, estão na aba <a
-href="https://afonsocampos.netlify.app/blog.html"
-title="Minhas postagens">postagens</a>, que comecei a escrever
-recentemente.</p>
+<p>Comecei essa “minibiografia” de maneira inversa para quem possa estar interessado apenas nas atividades mais recentes do que fiz. Detalhes de publicações podem ser observadas na aba <a href="https://afonsocampos.netlify.app/about.html" title="Minhas publicações">publicações</a> e/ou no meu <a href="http://lattes.cnpq.br/5655255986342326" title="meu curriculum lattes"><em>lattes</em></a>. Outras Atividades, relacionadas ao estudo de novas ferramentas, estão na aba <a href="https://afonsocampos.netlify.app/blog.html" title="Minhas postagens">postagens</a>, que comecei a escrever recentemente.</p>
+<h2 id="pesquisadoreng.agro.---funpar-2023-atual">Pesquisador/Eng.Agro. - FUNPAR (2023-Atual)</h2>
+<p>Em janeiro de 2023 fiz uma seleção para o cargo de egenheiro agrônomo que a Fundação da UFPR promoveu (FUNPAR) para o Programa de Melhoramento da cana-de-açúcar da Rede Interuniversitária para o Desenvolvimento do Setor Sucroenergético da Universidade Federal do Paraná (PMGCA/RIDESA/UFPR). Felizmente fui selecionado, e agora fechei o ciclo universitário e entrei formalmente para o mercado de trabalho.</p>
 <h2 id="pós-doutorado-2017-2022">Pós-doutorado (2017-2022)</h2>
-<p>Meu pós-doutoramento em Agronomia (Produção Vegetal) na Universidade
-Federal do Paraná foi supervisionado pelo professor Ricardo Augusto de
-Oliveira, coordenador do Programa de Melhoramento da cana-de-açúcar da
-Rede Interuniversitária para o Desenvolvimento do Setor Sucroenergético
-da Universidade Federal do Paraná (PMGCA/RIDESA/UFPR).</p>
-<p>Durante meu primeiro ano de pós-doutoramento residi em Paranavaí
-(PR), local estação experimental do PMGCA, onde pude acompanhar
-diariamente todas as atividades de campo desenvolvidas. Esse período foi
-importante para entender as necessidades do programa e pensar em como
-poderia contribuir para facilitar a vida da equipe.</p>
-<p>Comecei auxiliando nas rotinas de análises dos mais diversos tipos de
-experimentos que envolvem todas as fases do programa de melhoramento,
-buscando comunicar estes resultados de uma maneira simples e objetiva
-para todo o time. Após um ano na estação experimental, me mudei para
-Curitiba onde desenvolvi minhas atividades de pesquisa e aplicadas no
-Centro de Ciências agrarias da Universidade Federal do Paraná. No
-período em que estive universidade auxiliei discentes da graduação e
-pós-graduação na de análise de dados.</p>
-<p>Com o advento da pandemia em 2020, passei a desenvolver meus
-trabalhos de maneira remota até o fim do pós-doutoramento em maio de
-2022. Durante o período da pandemia, minhas principais atividades
-estavam relacionadas ao desenvolvimento de dashboards e alguns
-aplicativos para a obtenção de insights rápidos acerca das mais
-diferentes fontes de dados (meteorológicos, produção, fitopatológicos)
-obtidas pelo PMGCA. Durante este período desenvolvi nove dashboards em
-<a href="https://powerbi.microsoft.com/pt-br/what-is-power-bi/"
-title="site oficial Power BI">Power BI</a> e dois aplicativos em <a
-href="https://shiny.rstudio.com/"
-title="Site oficial do Shiny">Shiny</a>, cada um destes contendo algumas
-dezenas de visualizações e tabelas de análises.</p>
-<h2 id="quais-são-as-minhas-principais-habilidades">Quais São as Minhas
-Principais Habilidades</h2>
-<p>Meu ponto forte é a aplicação de análise de modelos direcionadas ao
-melhoramento genético entregando as informações das mais diferentes
-maneiras (<em>Dashbords</em>, Aplicativos e relatórios). Busco sempre a
-comunicação com a equipe para entender quais são as necessidades visando
-entregar as informações da maneira mais objetiva possível. Resumindo, eu
-gosto de resolver problemas. Para isso utilizo das mais diferentes
-ferramentas, como <a href="http://arquivo.ufv.br/dbg/genes/gdown1.htm"
-title="Site oficial Genes">GENES</a>, <a
-href="https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/2133/selegen"
-title="site Embrapa Selegen">SELEGEN</a>, Power Bi e <a
-href="https://www.r-project.org/" title="site oficial do R">R</a>, sendo
-esta última é a minha ferramenta favorita (Este site foi escrito em R/<a
-href="https://rstudio.github.io/distill/"
-title="site oficial distill">distill</a>).</p>
-<p>Isso só foi possível graças as disciplinas cursadas durante a
-pós-graduação e as demandas (Universidade/Programa de melhoramento) as
-quais me submeti a buscar a resposta durante toda a minha vida
-acadêmica. Outras fontes de aprendizado foram diversos livros e cursos
-<em>on-line</em>.</p>
+<p>Meu pós-doutoramento em Agronomia (Produção Vegetal) na Universidade Federal do Paraná foi supervisionado pelo professor Ricardo Augusto de Oliveira, coordenador do PMGCA/RIDESA/UFPR.</p>
+<p>Durante meu primeiro ano de pós-doutoramento residi em Paranavaí (PR), local estação experimental do PMGCA, onde pude acompanhar diariamente todas as atividades de campo desenvolvidas. Esse período foi importante para entender as necessidades do programa e pensar em como poderia contribuir para facilitar a vida da equipe.</p>
+<p>Comecei auxiliando nas rotinas de análises dos mais diversos tipos de experimentos que envolvem todas as fases do programa de melhoramento, buscando comunicar estes resultados de uma maneira simples e objetiva para todo o time. Após um ano na estação experimental, me mudei para Curitiba onde desenvolvi minhas atividades de pesquisa e aplicadas no Centro de Ciências agrarias da Universidade Federal do Paraná. No período em que estive universidade auxiliei discentes da graduação e pós-graduação na de análise de dados.</p>
+<p>Com o advento da pandemia em 2020, passei a desenvolver meus trabalhos de maneira remota até o fim do pós-doutoramento em maio de 2022. Durante o período da pandemia, minhas principais atividades estavam relacionadas ao desenvolvimento de dashboards e alguns aplicativos para a obtenção de insights rápidos acerca das mais diferentes fontes de dados (meteorológicos, produção, fitopatológicos) obtidas pelo PMGCA. Durante este período desenvolvi nove dashboards em <a href="https://powerbi.microsoft.com/pt-br/what-is-power-bi/" title="site oficial Power BI">Power BI</a> e dois aplicativos em <a href="https://shiny.rstudio.com/" title="Site oficial do Shiny">Shiny</a>, cada um destes contendo algumas dezenas de visualizações e tabelas de análises.</p>
+<h2 id="quais-são-as-minhas-principais-habilidades">Quais São as Minhas Principais Habilidades</h2>
+<p>Meu ponto forte é a aplicação de análise de modelos direcionadas ao melhoramento genético entregando as informações das mais diferentes maneiras (<em>Dashbords</em>, Aplicativos e relatórios). Busco sempre a comunicação com a equipe para entender quais são as necessidades visando entregar as informações da maneira mais objetiva possível. Resumindo, eu gosto de resolver problemas. Para isso utilizo das mais diferentes ferramentas, como <a href="http://arquivo.ufv.br/dbg/genes/gdown1.htm" title="Site oficial Genes">GENES</a>, <a href="https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/2133/selegen" title="site Embrapa Selegen">SELEGEN</a>, Power Bi e <a href="https://www.r-project.org/" title="site oficial do R">R</a>, sendo esta última é a minha ferramenta favorita (Este site foi escrito em R/<a href="https://rstudio.github.io/distill/" title="site oficial distill">distill</a>).</p>
+<p>Isso só foi possível graças as disciplinas cursadas durante a pós-graduação e as demandas (Universidade/Programa de melhoramento) as quais me submeti a buscar a resposta durante toda a minha vida acadêmica. Outras fontes de aprendizado foram diversos livros e cursos <em>on-line</em>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="capaci.gif" alt="Alguns dos cursos de capacaitação que fiz."  />
@@ -2210,65 +2165,22 @@ Figure 1: Alguns dos cursos de capacaitação que fiz.
 </p>
 </div>
 </div>
-<h2 id="o-caminho-até-o-pós-doutoramento">O Caminho Até o
-Pós-doutoramento</h2>
-<p>Minha trajetória acadêmica iniciou-se quando cursei agronomia na
-Universidade Federal da Paraíba em 2006 –2010. No segundo semestre do
-curso conheci o laboratório de biotecnologia vegetal e o meu futuro
-orientador o professor Maílson Monteiro do Rêgo, que lecionava a
-disciplina de genética. Estagiei durante quase 4 anos com
-micropropagação (via cultivo <em>in vitro</em>) de várias culturas. A
-grande influência no que eu queria fazer futuramente veio durante a
-graduação, em que fui monitor de genética por dois anos.</p>
-<p>Com a proximidade do final da graduação eu comecei a “cultivar” a
-ideia de tentar um mestrado, meu orientador e a esposa dele fizeram o
-doutorado na Universidade Federal de Viçosa (UFV), em Minas Gerais, e
-sempre falaram muito bem dos docentes desta instituição. Na verdade, a
-boa fama da UFV sempre foi forte para todos que passam pelas ciências
-agrárias/biológicas. Passei na prova do processo de seleção na UFV dando
-início ao meu mestrado em Genética e Melhoramento, e posteriormente o
-doutorado no mesmo programa.</p>
-<p>Fui orientado pelo professor Leonardo Lopes Behring, no laboratório
-de bioinformática. O professor Leonardo permitiu que eu escolhesse a
-cultura que era de meu interesse trabalhar uma vez que o foco do
-laboratório era análise de dados, independentemente da existência física
-ou não <em>(in silico</em>) de um experimento para ser analisado.</p>
-<p>Nesta época havia um novo <em>boom</em> da cana-de-açúcar, com a
-popularização cada vez maior dos carros <em>flex</em> além da aptidão
-natural da cultura para produção de açúcares. Isso fez com que a
-Monsanto, um grande <em>player</em> no mercado de melhoramento (hoje
-adquirida pala Bayer), comprasse uma empresa brasileira de melhoramento
-genético da cana-de-açúcar (CanaVialis). Esses motivos me fizeram
-iniciar meus estudos de doutorado e mestrado com a cultura da
-cana-de-açúcar tanto no mestrado quanto no doutorado.</p>
-<p>Minha dissertação de mestrado contou com co-orientação do
-Prof. Márcio Resende Barbosa (coordenador da RIDESA/UFV), e teve como
-tema principal o estudo da depressão endogâmica em cana-de-açúcar. Já a
-minha tese de doutorado, buscou desenvolver um índice de seleção baseado
-em lógica <em>fuzzy</em> para a seleção de clones promissores de
-cana-energia com dados coletados junto ao programa de melhoramento
-genético da cana de açúcar do Paraná (RIDESA/UFPR).</p>
-<p>Durante seis anos vivenciei a fama do ensino de ponta desta
-instituição e tive a oportunidade de conviver com excelentes
-profissionais das mais diversas áreas, dentro de fora da universidade.
-Todavia, com a proximidade do termino do doutorado fiquei com a sensação
-que deveria ter sugado mais o conhecimento disponível dentro do programa
-de melhoramento genético e isso me motivou a fazer o pós-doutorado na
-UFPR.</p>
+<h2 id="o-caminho-até-o-pós-doutoramento">O Caminho Até o Pós-doutoramento</h2>
+<p>Minha trajetória acadêmica iniciou-se quando cursei agronomia na Universidade Federal da Paraíba em 2006 –2010. No segundo semestre do curso conheci o laboratório de biotecnologia vegetal e o meu futuro orientador o professor Maílson Monteiro do Rêgo, que lecionava a disciplina de genética. Estagiei durante quase 4 anos com micropropagação (via cultivo <em>in vitro</em>) de várias culturas. A grande influência no que eu queria fazer futuramente veio durante a graduação, em que fui monitor de genética por dois anos.</p>
+<p>Com a proximidade do final da graduação eu comecei a “cultivar” a ideia de tentar um mestrado, meu orientador e a esposa dele fizeram o doutorado na Universidade Federal de Viçosa (UFV), em Minas Gerais, e sempre falaram muito bem dos docentes desta instituição. Na verdade, a boa fama da UFV sempre foi forte para todos que passam pelas ciências agrárias/biológicas. Passei na prova do processo de seleção na UFV dando início ao meu mestrado em Genética e Melhoramento, e posteriormente o doutorado no mesmo programa.</p>
+<p>Fui orientado pelo professor Leonardo Lopes Behring, no laboratório de bioinformática. O professor Leonardo permitiu que eu escolhesse a cultura que era de meu interesse trabalhar uma vez que o foco do laboratório era análise de dados, independentemente da existência física ou não <em>(in silico</em>) de um experimento para ser analisado.</p>
+<p>Nesta época havia um novo <em>boom</em> da cana-de-açúcar, com a popularização cada vez maior dos carros <em>flex</em> além da aptidão natural da cultura para produção de açúcares. Isso fez com que a Monsanto, um grande <em>player</em> no mercado de melhoramento (hoje adquirida pala Bayer), comprasse uma empresa brasileira de melhoramento genético da cana-de-açúcar (CanaVialis). Esses motivos me fizeram iniciar meus estudos de doutorado e mestrado com a cultura da cana-de-açúcar tanto no mestrado quanto no doutorado.</p>
+<p>Minha dissertação de mestrado contou com co-orientação do Prof. Márcio Resende Barbosa (coordenador da RIDESA/UFV), e teve como tema principal o estudo da depressão endogâmica em cana-de-açúcar. Já a minha tese de doutorado, buscou desenvolver um índice de seleção baseado em lógica <em>fuzzy</em> para a seleção de clones promissores de cana-energia com dados coletados junto ao programa de melhoramento genético da cana de açúcar do Paraná (RIDESA/UFPR).</p>
+<p>Durante seis anos vivenciei a fama do ensino de ponta desta instituição e tive a oportunidade de conviver com excelentes profissionais das mais diversas áreas, dentro de fora da universidade. Todavia, com a proximidade do termino do doutorado fiquei com a sensação que deveria ter sugado mais o conhecimento disponível dentro do programa de melhoramento genético e isso me motivou a fazer o pós-doutorado na UFPR.</p>
 <h2 id="hobbies"><em>Hobbies</em></h2>
 <ul>
 <li>Aos sábados tiro a “poeira dos dedos” tocando violão;</li>
-<li>Também aos sábados aproveito para pilotar a churrasqueira assando um
-<del>quase sempre</del> belo churrasco;</li>
-<li>Além do churrasco, cozinho quase todos os pratos que gosto de comer,
-justificando meu pequeno tamanho;</li>
-<li>“Engenhoqueiro” oficial que desmonta tudo e <del>as vezes</del>
-consegue arrumar na base da gambiarra e de vídeos do Youtube;</li>
-<li>Uma vez a cada uns cinco anos me aventuro desenhando alguma
-coisa.</li>
+<li>Também aos sábados aproveito para pilotar a churrasqueira assando um <del>quase sempre</del> belo churrasco;</li>
+<li>Além do churrasco, cozinho quase todos os pratos que gosto de comer, justificando meu pequeno tamanho;</li>
+<li>“Engenhoqueiro” oficial que desmonta tudo e <del>as vezes</del> consegue arrumar na base da gambiarra e de vídeos do Youtube;</li>
+<li>Uma vez a cada uns cinco anos me aventuro desenhando alguma coisa.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

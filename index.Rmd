@@ -26,9 +26,14 @@ knitr::include_graphics("afonso_capa2.png")
 
 Comecei essa "minibiografia" de maneira inversa para quem possa estar interessado apenas nas atividades mais recentes do que fiz. Detalhes de publicações podem ser observadas na aba [publicações](https://afonsocampos.netlify.app/about.html "Minhas publicações") e/ou no meu [*lattes*](http://lattes.cnpq.br/5655255986342326 "meu curriculum lattes"). Outras Atividades, relacionadas ao estudo de novas ferramentas, estão na aba [postagens](https://afonsocampos.netlify.app/blog.html "Minhas postagens"), que comecei a escrever recentemente.
 
+## Pesquisador/Eng.Agro. - FUNPAR (2023-Atual)
+
+Em janeiro de 2023 fiz uma seleção para o cargo de egenheiro agrônomo que a Fundação da UFPR promoveu (FUNPAR) para o Programa de Melhoramento da cana-de-açúcar da Rede Interuniversitária para o Desenvolvimento do Setor Sucroenergético da Universidade Federal do Paraná (PMGCA/RIDESA/UFPR). Felizmente fui selecionado, e agora fechei o ciclo universitário e entrei formalmente para o mercado de trabalho.  
+
+
 ## Pós-doutorado (2017-2022)
 
-Meu pós-doutoramento em Agronomia (Produção Vegetal) na Universidade Federal do Paraná foi supervisionado pelo professor Ricardo Augusto de Oliveira, coordenador do Programa de Melhoramento da cana-de-açúcar da Rede Interuniversitária para o Desenvolvimento do Setor Sucroenergético da Universidade Federal do Paraná (PMGCA/RIDESA/UFPR).
+Meu pós-doutoramento em Agronomia (Produção Vegetal) na Universidade Federal do Paraná foi supervisionado pelo professor Ricardo Augusto de Oliveira, coordenador do PMGCA/RIDESA/UFPR.
 
 Durante meu primeiro ano de pós-doutoramento residi em Paranavaí (PR), local estação experimental do PMGCA, onde pude acompanhar diariamente todas as atividades de campo desenvolvidas. Esse período foi importante para entender as necessidades do programa e pensar em como poderia contribuir para facilitar a vida da equipe.
 
