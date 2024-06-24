@@ -16,6 +16,9 @@ text-align: justify}
 ```
 ## Artigos Publicados
 
+### 2024
+[CORTEZ, J. W. M.; DOLINSKI, M. A.; MEDINA, C. V.; **DE AZEREDO, A. A. C.**; ZANETTE, F. Arbuscular mycorrhizal fungi and phosphorus affect Araucaria angustifolia seedling growth. Ciencia e investigación agraria: revista latinoamericana de ciencias de la agricultura, 51(1), 44-56.](https://dialnet.unirioja.es/servlet/articulo?codigo=9499285){target="_blank"}
+
 ### 2023
 
 -   [VILCATOMA-MEDINA, C.; DOLINSKI, M.A.; MEDOZA-CORTEZ, J.W.; **AZEREDO, A.A.C.**; BIASI, L.A. ; TOFANELLI, M.B.D. **Mycorrhizal fungi and phosphate fertilization in the formation of seedlings of vine rootstock -IAC-766 Campinas**. REVISTA CHAPINGO. SERIE: HORTICULTURA, v. 29, p. 33-46, 2023.](https://revistas.chapingo.mx/horticultura/?section=articles&subsec=issues&numero=306&articulo=2810){target="_blank"}

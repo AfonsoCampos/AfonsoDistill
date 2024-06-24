@@ -21,7 +21,7 @@
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -458,8 +458,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
   <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
   <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
@@ -829,9 +829,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     display: none !important;
   }
 
+  hr.section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+
+
+  d-byline {
+    border-top: none;
+  }
+
   d-article {
     padding-top: 2.5rem;
     padding-bottom: 30px;
+    border-top: none;
   }
 
   d-appendix {
@@ -926,6 +938,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article div.sourceCode pre {
     padding-left: 18px;
     font-size: 14px;
+  }
+
+  /* tweak for Pandoc numbered line within distill */
+  d-article pre.numberSource code > span {
+      left: -2em;
   }
 
   d-article pre {
@@ -1687,6 +1704,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // create d-title
     $('.d-title').changeElementType('d-title');
 
+    // separator
+    var separator = '<hr class="section-separator" style="clear: both"/>';
+    // prepend separator above appendix
+    $('.d-byline').before(separator);
+    $('.d-article').before(separator);
+
     // create d-byline
     var byline = $('<d-byline></d-byline>');
     $('.d-byline').replaceWith(byline);
@@ -1764,8 +1787,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     $('.distill-force-highlighting-css').parent().remove();
 
     // remove empty line numbers inserted by pandoc when using a
-    // custom syntax highlighting theme
-    $('code.sourceCode a:empty').remove();
+    // custom syntax highlighting theme, except when numbering line
+    // in code chunk
+    $('pre:not(.numberLines) code.sourceCode a:empty').remove();
 
     // load distill framework
     load_distill_framework();
@@ -1791,12 +1815,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // add orcid ids
       $('.authors-affiliations').find('.author').each(function(i, el) {
         var orcid_id = front_matter.authors[i].orcidID;
+        var author_name = front_matter.authors[i].author
         if (orcid_id) {
           var a = $('<a></a>');
           a.attr('href', 'https://orcid.org/' + orcid_id);
           var img = $('<img></img>');
           img.addClass('orcid-id');
-          img.attr('alt', 'ORCID ID');
+          img.attr('alt', author_name ? 'ORCID ID for ' + author_name : 'ORCID ID');
           img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
           a.append(img);
           $(this).append(a);
@@ -2074,7 +2099,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2131,6 +2156,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-title">
 <h1>Publicações</h1>
+
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p>Este espaço será destinado para as principais publicações desenvolvidas durante minha trajetoria acadêmica.</p>
@@ -2143,31 +2169,33 @@ body {
 text-align: justify}
 </style>
 <h2 id="artigos-publicados">Artigos Publicados</h2>
-<h3 id="section">2023</h3>
+<h3 id="section">2024</h3>
+<p><a href="https://dialnet.unirioja.es/servlet/articulo?codigo=9499285" target="_blank">CORTEZ, J. W. M.; DOLINSKI, M. A.; MEDINA, C. V.; <strong>DE AZEREDO, A. A. C.</strong>; ZANETTE, F. Arbuscular mycorrhizal fungi and phosphorus affect Araucaria angustifolia seedling growth. Ciencia e investigación agraria: revista latinoamericana de ciencias de la agricultura, 51(1), 44-56.</a></p>
+<h3 id="section-1">2023</h3>
 <ul>
 <li><p><a href="https://revistas.chapingo.mx/horticultura/?section=articles&amp;subsec=issues&amp;numero=306&amp;articulo=2810" target="_blank">VILCATOMA-MEDINA, C.; DOLINSKI, M.A.; MEDOZA-CORTEZ, J.W.; <strong>AZEREDO, A.A.C.</strong>; BIASI, L.A. ; TOFANELLI, M.B.D. <strong>Mycorrhizal fungi and phosphate fertilization in the formation of seedlings of vine rootstock -IAC-766 Campinas</strong>. REVISTA CHAPINGO. SERIE: HORTICULTURA, v. 29, p. 33-46, 2023.</a></p></li>
 <li><p><a href="hhttps://www.scielo.br/j/pab/a/dJywmbW3qnXszV8VhxLQcMh/?lang=en" target="_blank">HATER, A. ; ANTUNES, W.R. ; AZEREDO, A.A.C. ; SILVA, S.D.A.E. ; OLIVEIRA, R.A. <strong>Early screening for cold tolerance in sugarcane breeding</strong>. PESQUISA AGROPECUÁRIA BRASILEIRA (ONLINE), v. 58, p. 1-11, 2023.</a></p></li>
 </ul>
-<h3 id="section-1">2022</h3>
+<h3 id="section-2">2022</h3>
 <ul>
 <li><a href="https://www.geneticsmr.com/articles/resistance-orange-rust-associated-g1-molecular-marker-parents-brazilian-rb-sugarcane" target="_blank">BORELLA, JULIANE ; BRASILEIRO, B.P. ; <strong>DE AZEREDO, A.A.C.</strong> ; RUARO, LUCIMERIS ; DE OLIVEIRA, R.A. ; BESPALHOK FILHO, JOÃO CARLOS. <strong>Resistance to orange rust associated with the G1 molecular marker in parents of Brazilian RB sugarcane varieties</strong>. GENETICS AND MOLECULAR RESEARCH. v. 21, p. 1-12, 2022</a></li>
 </ul>
-<h3 id="section-2">2021</h3>
+<h3 id="section-3">2021</h3>
 <ul>
 <li><a href="https://link.springer.com/article/10.1007%2Fs12355-021-00992-6" target="_blank">BORELLA, JULIANE ; PORTELA BRASILEIRO, BRUNO ; <strong>DE AZEREDO, AMARO AFONSO CAMPOS</strong>; RUARO, LUCIMERIS ; DE OLIVEIRA, RICARDO AUGUSTO ; BESPALHOK FILHO, JOÃO CARLOS . <strong>Reaction to Brown Rust and Presence of the Bru1 Gene in Brazil/RIDESA Sugarcane Parents</strong>. SUGAR TECH, v. 23, p. 1-8, 2021.</a></li>
 </ul>
-<h3 id="section-3">2020</h3>
+<h3 id="section-4">2020</h3>
 <ul>
 <li><p><a href="https://www.scielo.br/j/cr/a/SBKPFCfh434FRFMYsn84Dtc/?lang=en" target="_blank">VERISSIMO, MARIO ALVARO ALOISIO; <strong>AZEREDO, AMARO AFONSO CAMPOS DE</strong> ; SILVA, SERGIO DELMAR DOS ANJOS E ; BRASILEIRO, BRUNO PORTELA ; BESPALHOK FILHO, JOÃO CARLOS ; DAROS, EDELCLAITON ; OLIVEIRA, RICARDO AUGUSTO DE. <strong>Selection of sugarcane families and clones under cold stress</strong>. CIENCIA RURAL, v. 50, p. 1-13, 2020.</a></p></li>
 <li><p><a href="https://link.springer.com/article/10.1007%2Fs10681-020-02626-6" target="_blank"><strong>DE AZEREDO, AMARO AFONSO CAMPOS</strong>; BHERING, LEONARDO LOPES; DE OLIVEIRA, RICARDO AUGUSTO ; CRUZ, COSME DAMIÃO ; BESPALHOK FILHO, JOÃO CARLOS; BRASILEIRO, BRUNO PORTELA. <strong>Fuzzy controller in the selection of sugarcane and energy cane ideotypes</strong>. EUPHYTICA (DORDRECHT. ONLINE), v. 216, p. 1-15, 2020.</a></p></li>
 <li><p><a href="https://www.scielo.cl/pdf/idesia/v38n4/0718-3429-idesia-38-04-17.pdf" target="_blank">JUNIOR, A.R. ; <strong>de AZEREDO, A.A.C.</strong>; ROMANO, T.; BRASILEIRO, B.P.; BESPALHOK FILHO, J.C.; RUARO, LUCIMERIS; DAROS, E.; Oliveira, R.A. <strong>Energy-cane: resistant to major sugarcane diseases?</strong>. Idesia (Arica), v. 38, p. 17, 2020.</a></p></li>
 </ul>
-<h3 id="section-4">2017</h3>
+<h3 id="section-5">2017</h3>
 <ul>
 <li><p><a href="http://www.funpecrp.com.br/gmr/year2017/vol16-1/pdf/gmr-16-01-gmr.16019535.pdf" target="_blank"><strong>de AZEREDO, A. A. C.</strong>; BHERING, L.L.; BRASILEIRO, B.P.; CRUZ, C.D.; SILVEIRA, L. C. I.; Oliveira, R.A.; BESPALHOK FILHO, J. C.; DAROS, E. <strong>Comparison between different selection indices in energy cane breeding</strong>. Genetics and Molecular Research, v. 16, p. 1-12, 2017.</a></p></li>
 <li><p><a href="http://www.funpecrp.com.br/gmr/year2017/vol16-3/pdf/gmr-16-03-gmr.16039773.pdf">JÚNIOR, A.R. FERNANDES; <strong>DE AZEREDO, A.A.C.</strong>; DE OLIVEIRA, R.A.; FILHO, J.C. BESPALHOK; IDO, O.T.; DAROS, E.; BRASILEIRO, B.P.<strong>Agricultural performance and genetic parameters for yield-related traits of sugar- and energy cane families derived from planned crosses</strong>. GENETICS AND MOLECULAR RESEARCH, v. 16, p. 1-11, 2017.</a></p></li>
 </ul>
-<h3 id="section-5">2016</h3>
+<h3 id="section-6">2016</h3>
 <ul>
 <li><a href="http://www.funpecrp.com.br/gmr/year2016/vol15-2/pdf/gmr7965.pdf" target="_blank"><strong>DE AZEREDO, A.A.C.</strong>; BHERING, L.L.; BRASILEIRO, B.P.; CRUZ, C.D.; BARBOSA, M.H.P. <strong>Selection in sugarcane based on inbreeding depression</strong>. Genetics and Molecular Research, v. 15, p. 1-11, 2016.</a></li>
 </ul>
